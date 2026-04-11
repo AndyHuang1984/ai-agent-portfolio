@@ -151,7 +151,7 @@ LLM Scripting (GPT-5.4)
 
 ## Experience
 
-14 years in software development. Former Android/iOS/Unity engineer at Gamania, Aspeed Tech, So-net Taiwan. Transitioned to AI Agent systems engineering in late 2024.
+14 years in software development. Former Android/iOS/Unity engineer at Gamania, Aspeed Tech, So-net Taiwan. Transitioned to AI Agent systems engineering in mid-2025.
 
 ---
 
