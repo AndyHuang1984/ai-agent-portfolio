@@ -97,6 +97,18 @@ LLM Scripting (GPT-5.4)
 - Quality gates: 11-point Vision LLM check + Self-Refine feedback loop
 - TTS 3-tier retry: seed rotation → LLM text rewrite → best-effort with cut repair
 
+### Claude Code Integration — 開發核心 ("蝦師")
+- **Claude Code (Opus)** 作為系統的主要開發者，透過 `claude.ai/code` 遠端操作 Server + SSH Mac
+- 整個系統 50+ Python 腳本、70+ SOP 文件、47 條 Lessons Learned 皆由 Claude Code 協作開發
+- **Claude Daemon** — 雙機器各部署一個常駐 HTTP server（`localhost:5050`），供 pipeline LLM fallback
+  - `--output-format stream-json` 解析 content blocks（workaround Claude Code stdout 空白 bug）
+  - systemd watchdog（`WatchdogSec=120`）自動重啟
+  - Gateway (GPT-5.4) 失敗 → Claude Daemon 自動接手，3-layer fallback chain
+- **開發工作流**: Claude Code → code review → fix → 文件更新 → sync OpenClaw workspace → commit
+- **Deep Plan 方法論**: 盤點 → 模組化拆分 → 逐模組研究/實作/測試 → 持久化進度到 `docs/sop/`
+- **跨機器操作**: 從 Linux server SSH 到 Mac，直接管理 OpenClaw cron、知識庫、部署
+- **Memory 系統**: 4 類記憶（user/feedback/project/reference）跨 session 持久化，自動學習使用者偏好
+
 ### Mac Automation
 - OpenClaw cron: crypto cycle tracking every 10 min, morning/night reports via Telegram
 - Scheduler rescue system: heartbeat fallback if cron misses window
@@ -139,8 +151,9 @@ LLM Scripting (GPT-5.4)
 
 | Category | Technologies |
 |----------|-------------|
-| **AI Agent** | OpenClaw Multi-Agent, Heartbeat, Dispatch Queue, Claude Code |
-| **LLM** | GPT-5.4, Gemma 4 31B (Ollama), Claude, 3-layer fallback |
+| **AI Agent** | OpenClaw Multi-Agent, Heartbeat, Dispatch Queue |
+| **Development** | Claude Code (Opus) remote, Claude Daemon (fallback LLM), Deep Plan methodology |
+| **LLM** | GPT-5.4 (pipeline), Gemma 4 31B (Ollama, agent chat), Claude (daemon fallback) |
 | **AI Generation** | ComfyUI, FLUX, HiDream, WAN 2.2 I2V/S2V, SeedVR2, RIFE |
 | **TTS/STT** | CosyVoice3 0.5B, Whisper turbo |
 | **Backend** | FastAPI, Python asyncio, SQLite, EventBus SSE |
