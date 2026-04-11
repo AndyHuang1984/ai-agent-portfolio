@@ -1,11 +1,13 @@
-# AI Agent 自主生產平台
+[🇹🇼 中文版](README.zh-TW.md)
 
-> 一人團隊 + Multi-Agent 系統，跨兩台機器全自動運行：影片生產 + 加密貨幣研究 + 部落格發布
+# AI Agent Autonomous Production Platform
 
-**黃詣超 Andy Huang** — AI Agent System Engineer / Senior Software Developer
+> One-person team + Multi-Agent system, fully automated across 2 machines: video production + crypto research + blog publishing
 
-[![Resume](https://img.shields.io/badge/Resume-HTML-blue)](resume.html)
-[![Showcase](https://img.shields.io/badge/Showcase-Portfolio-green)](showcase.html)
+**Andy Huang** — AI Agent System Engineer / Senior Software Developer
+
+[![Resume](https://img.shields.io/badge/Resume-View-blue)](https://andyhuang1984.github.io/ai-agent-portfolio/resume.html)
+[![Showcase](https://img.shields.io/badge/Showcase-Portfolio-green)](https://andyhuang1984.github.io/ai-agent-portfolio/showcase.html)
 [![YouTube](https://img.shields.io/badge/YouTube-Channel-red)](https://www.youtube.com/@ShrimpCatStudio)
 
 ---
@@ -13,19 +15,19 @@
 ## System Architecture
 
 ```
-老闆（1 人）
-  ↓ Telegram 群組
-  ├── 🖥️ Server (RTX 5090 32GB)          ├── 💻 Mac (OpenClaw)
-  │   克蕾（隊長/GPT-5.4）                │   獨立 Agent（GPT-5.4）
-  │   愛達（工程師/Gemma 4 31B 本地）       │   ↓
-  │   艾米（素材獵人/Gemma 4 31B 本地）     │   加密貨幣研究 + 部落格
-  │   ↓                                   │   → Telegram 報告
-  │   夜間全自動 Pipeline                  │   → 三平台自動發布
-  │   → YouTube 自動上傳                  │
-  │   ↓                                   │
-  │   TG 自然閒聊（3 agent 對話）          │
-  └───────────────────────────────────────┘
-      ↕ Tailscale VPN 跨機器互聯
+Owner (1 person)
+  ↓ Telegram Group
+  ├── 🖥️ Server (RTX 5090 32GB)             ├── 💻 Mac (OpenClaw)
+  │   Cleo (Captain / GPT-5.4)              │   Independent Agent (GPT-5.4)
+  │   Ada (Coder / GPT-5.4-mini)            │   ↓
+  │   Amelia (Scout / GPT-5.4-mini)         │   Crypto Research + Blog
+  │   ↓                                     │   → Telegram Reports
+  │   Nightly Auto Pipeline                 │   → 3-Platform Auto Publish
+  │   → YouTube Auto Upload                 │
+  │   ↓                                     │
+  │   TG Natural Chat (3 agents)            │
+  └─────────────────────────────────────────┘
+      ↕ Tailscale VPN Cross-Machine Mesh
 ```
 
 ## Products (Fully Automated, Zero Human Intervention)
@@ -57,24 +59,18 @@ LLM Scripting (GPT-5.4)
 
 ### Server (Ubuntu Linux, RTX 5090 32GB)
 - **3 AI Agents** via OpenClaw: captain (GPT-5.4), coder (GPT-5.4-mini), scout (GPT-5.4-mini)
-- **Nightly pipeline** 01:00 自動啟動，序列化 3 條生產線，0 人工介入
+- **Nightly pipeline**: auto-starts at 01:00, serializes 3 production lines, zero human intervention
 - **Docker services**: ComfyUI, Ollama, CosyVoice TTS, ChromaDB, SearXNG
-- **Claude Code** as development assistant ("蝦師"), remote via `claude.ai/code`
-- **Claude Daemon** HTTP server (localhost:5050) for pipeline LLM fallback
 
 ### Mac (MacBook Air M2 24GB, OpenClaw)
-- **1 AI Agent** (GPT-5.4) — 加密貨幣研究 + 部落格自動發布
-- **9 cron jobs**: crypto tracker (10min), daily report (08:00/23:00), blog prep (Sun/Tue/Fri), memory rebuild
-- **Crypto research**: Binance Futures Testnet 雙帳戶模擬（100U + 1000U），Research Context 驅動決策
-- **Blog auto-publish**: 3 platforms (Substack / Medium / vocus)，Auto Rewrite Until Pass，Chrome 自動操作
-- **Claude Daemon** (localhost:5050) + OpenClaw gateway (GPT-5.4)
-- **Memory Wiki**: bridge mode, knowledge ingestion + compile cron
+- **1 AI Agent** (GPT-5.4) — crypto research + blog auto-publishing
+- **9 cron jobs**: crypto tracker (10min), daily report (08:00/23:00), blog prep (Sun/Tue/Fri)
+- **Crypto research**: Binance Futures Testnet dual-account simulation (100U + 1000U)
+- **Blog auto-publish**: 3 platforms (Substack / Medium / vocus), Auto Rewrite Until Pass
 
-### Cross-Machine Integration
-- **Tailscale VPN** mesh networking（Server ↔ Mac 互通）
-- **SSH remote operations**: Server 端 Claude Code 可直接 SSH 操作 Mac
-- **Telegram 統一入口**: 所有 agent 共用 TG 群組，跨機器即時通訊
-- **`sync_workspace.sh`**: bootstrap 文件同步到所有 agent workspace（hard copy，非 symlink）
+### Cross-Machine
+- **Tailscale VPN** mesh networking
+- **Telegram** unified communication — all agents share one group
 
 ## Key Technical Highlights
 
@@ -86,7 +82,7 @@ LLM Scripting (GPT-5.4)
 - Telegram 3-bot natural chat — agents reply without @mention
 
 ### GPU VRAM Management (Single GPU, Multiple Services)
-- ComfyUI (WAN 2.2 ~20GB) ↔ Ollama (Gemma 4 31B fallback ~26GB) ↔ CosyVoice (0.5B ~3GB)
+- ComfyUI (WAN 2.2 ~20GB) ↔ Ollama (Gemma 4 31B ~26GB) ↔ CosyVoice (0.5B ~3GB)
 - Automatic model swap: `/free` → unload → load → health verify
 - GGUF binary patching for context window control (262K → 8K)
 - 3-layer defense: GGUF patch + models.json + watchdog auto-repair
@@ -97,15 +93,15 @@ LLM Scripting (GPT-5.4)
 - Quality gates: 11-point Vision LLM check + Self-Refine feedback loop
 - TTS 3-tier retry: seed rotation → LLM text rewrite → best-effort with cut repair
 
-### Claude Code — 系統開發核心
-- **Claude Code (Opus)** 是整個平台的主要開發者，50+ 腳本、70+ SOP、47 條 Lessons Learned 皆協作完成
-- **Claude Daemon** 常駐雙機器，作為 pipeline LLM fallback（Gateway 失敗自動接手）
+### Claude Code — Development Core
+- **Claude Code (Opus)** is the primary developer of this entire platform — 50+ scripts, 70+ SOPs, 47 Lessons Learned
+- **Claude Daemon** deployed on both machines as pipeline LLM fallback
 
 ### Mac Automation
 - OpenClaw cron: crypto cycle tracking every 10 min, morning/night reports via Telegram
 - Scheduler rescue system: heartbeat fallback if cron misses window
 - Daily briefing state machine: day rollover + proactive task discovery
-- Chrome desktop automation: `osascript` + `screencapture` for blog publishing
+- Chrome desktop automation for blog publishing
 
 ## Code Samples
 
@@ -125,10 +121,10 @@ LLM Scripting (GPT-5.4)
 
 ### AI Agent Team
 <p float="left">
-  <img src="assets/agents/avatar_cleo.png" width="120" title="克蕾 — Captain (Server)" />
-  <img src="assets/agents/avatar_ada.png" width="120" title="愛達 — Coder (Server)" />
-  <img src="assets/agents/avatar_amelia.png" width="120" title="艾米 — Scout (Server)" />
-  <img src="assets/agents/avatar_mac_agent.jpg" width="120" title="人間清醒 — Mac Agent" />
+  <img src="assets/agents/avatar_cleo.png" width="120" title="Cleo — Captain (Server)" />
+  <img src="assets/agents/avatar_ada.png" width="120" title="Ada — Coder (Server)" />
+  <img src="assets/agents/avatar_amelia.png" width="120" title="Amelia — Scout (Server)" />
+  <img src="assets/agents/avatar_mac_agent.jpg" width="120" title="Lucid — Mac Agent" />
 </p>
 
 ### Generated Keyframes
@@ -144,8 +140,8 @@ LLM Scripting (GPT-5.4)
 | Category | Technologies |
 |----------|-------------|
 | **AI Agent** | OpenClaw Multi-Agent, Heartbeat, Dispatch Queue |
-| **Development** | Claude Code (Opus) remote, Claude Daemon (fallback LLM), Deep Plan methodology |
-| **LLM** | GPT-5.4 (pipeline + captain), GPT-5.4-mini (coder/scout), Gemma 4 31B (Ollama, local fallback), Claude (daemon fallback) |
+| **Development** | Claude Code (Opus), Claude Daemon (fallback LLM) |
+| **LLM** | GPT-5.4, GPT-5.4-mini, Gemma 4 31B (local fallback), Claude (daemon fallback) |
 | **AI Generation** | ComfyUI, FLUX, HiDream, WAN 2.2 I2V/S2V, SeedVR2, RIFE |
 | **TTS/STT** | CosyVoice3 0.5B, Whisper turbo |
 | **Backend** | FastAPI, Python asyncio, SQLite, EventBus SSE |
@@ -155,7 +151,7 @@ LLM Scripting (GPT-5.4)
 
 ## Experience
 
-14 years in software development. Former Android/iOS/Unity engineer at Gamania (遊戲橘子), Aspeed (信驊科技), So-net Taiwan. Transitioned to AI Agent systems engineering in late 2024.
+14 years in software development. Former Android/iOS/Unity engineer at Gamania, Aspeed Tech, So-net Taiwan. Transitioned to AI Agent systems engineering in late 2024.
 
 ---
 
