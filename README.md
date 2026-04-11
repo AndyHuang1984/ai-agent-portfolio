@@ -121,9 +121,10 @@ LLM Scripting (GPT-5.4)
 
 ### AI Agent Team
 <p float="left">
-  <img src="assets/agents/avatar_cleo.png" width="120" title="克蕾 — Captain" />
-  <img src="assets/agents/avatar_ada.png" width="120" title="愛達 — Coder" />
-  <img src="assets/agents/avatar_amelia.png" width="120" title="艾米 — Scout" />
+  <img src="assets/agents/avatar_cleo.png" width="120" title="克蕾 — Captain (Server)" />
+  <img src="assets/agents/avatar_ada.png" width="120" title="愛達 — Coder (Server)" />
+  <img src="assets/agents/avatar_amelia.png" width="120" title="艾米 — Scout (Server)" />
+  <img src="assets/agents/avatar_mac_agent.jpg" width="120" title="人間清醒 — Mac Agent" />
 </p>
 
 ### Generated Keyframes
