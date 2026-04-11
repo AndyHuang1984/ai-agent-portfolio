@@ -97,17 +97,10 @@ LLM Scripting (GPT-5.4)
 - Quality gates: 11-point Vision LLM check + Self-Refine feedback loop
 - TTS 3-tier retry: seed rotation → LLM text rewrite → best-effort with cut repair
 
-### Claude Code Integration — 開發核心 ("蝦師")
-- **Claude Code (Opus)** 作為系統的主要開發者，透過 `claude.ai/code` 遠端操作 Server + SSH Mac
-- 整個系統 50+ Python 腳本、70+ SOP 文件、47 條 Lessons Learned 皆由 Claude Code 協作開發
-- **Claude Daemon** — 雙機器各部署一個常駐 HTTP server（`localhost:5050`），供 pipeline LLM fallback
-  - `--output-format stream-json` 解析 content blocks（workaround Claude Code stdout 空白 bug）
-  - systemd watchdog（`WatchdogSec=120`）自動重啟
-  - Gateway (GPT-5.4) 失敗 → Claude Daemon 自動接手，3-layer fallback chain
-- **開發工作流**: Claude Code → code review → fix → 文件更新 → sync OpenClaw workspace → commit
-- **Deep Plan 方法論**: 盤點 → 模組化拆分 → 逐模組研究/實作/測試 → 持久化進度到 `docs/sop/`
-- **跨機器操作**: 從 Linux server SSH 到 Mac，直接管理 OpenClaw cron、知識庫、部署
-- **Memory 系統**: 4 類記憶（user/feedback/project/reference）跨 session 持久化，自動學習使用者偏好
+### Claude Code — 系統開發核心
+- **Claude Code (Opus)** 是整個平台的主要開發者，50+ 腳本、70+ SOP、47 條 Lessons Learned 皆協作完成
+- 透過 `claude.ai/code` 遠端操作雙機器（Server + SSH Mac），開發、部署、除錯一條龍
+- **Claude Daemon** 常駐雙機器，作為 pipeline LLM fallback（Gateway 失敗自動接手）
 
 ### Mac Automation
 - OpenClaw cron: crypto cycle tracking every 10 min, morning/night reports via Telegram
