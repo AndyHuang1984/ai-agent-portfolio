@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>黃詣超 — AI Agent System Engineer</title>
+<style>
+  @page { size: A4; margin: 15mm 14mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Noto Sans CJK TC", "Microsoft JhengHei", "PingFang TC", sans-serif; font-size: 10pt; line-height: 1.5; color: #1a1a1a; max-width: 210mm; margin: 0 auto; }
+  h1 { font-size: 20pt; margin: 0 0 2px; color: #111; }
+  h2 { font-size: 13pt; color: #0055aa; border-bottom: 2px solid #0055aa; padding-bottom: 2px; margin: 14px 0 6px; }
+  h3 { font-size: 11pt; color: #222; margin: 10px 0 3px; }
+  .subtitle { font-size: 10.5pt; color: #555; margin-bottom: 8px; }
+  .contact { font-size: 9.5pt; color: #444; margin-bottom: 10px; }
+  .contact span { margin-right: 14px; }
+  table { width: 100%; border-collapse: collapse; margin: 4px 0 8px; font-size: 9.5pt; }
+  th { background: #f0f4f8; text-align: left; padding: 4px 6px; border: 1px solid #ddd; font-weight: 600; }
+  td { padding: 4px 6px; border: 1px solid #ddd; vertical-align: top; }
+  ul { margin: 2px 0 6px 16px; padding: 0; }
+  li { margin-bottom: 2px; }
+  .tag { display: inline-block; background: #e8f0fe; color: #1a56db; font-size: 8.5pt; padding: 1px 6px; border-radius: 3px; margin: 1px 2px; }
+  .highlight { background: #f8fafc; border-left: 3px solid #0055aa; padding: 6px 10px; margin: 6px 0; font-size: 9.5pt; }
+  .metric { font-weight: 700; color: #0055aa; }
+  .page-break { page-break-before: always; }
+  .two-col { display: flex; gap: 16px; }
+  .two-col > div { flex: 1; }
+  hr { border: none; border-top: 1px solid #ddd; margin: 8px 0; }
+  .small { font-size: 8.5pt; color: #777; }
+  .timeline { font-size: 9pt; color: #666; float: right; }
+</style>
+</head>
+<body>
+
+<h1>黃詣超 Andy Huang</h1>
+<div class="subtitle">AI Agent System Engineer / Senior Software Developer</div>
+<div class="contact">
+  <span>GitHub: <a href="https://github.com/AndyHuang1984">AndyHuang1984</a></span>
+  
+  <span>台灣</span>
+  <span>大仁科技大學 資訊工程系</span>
+</div>
+
+<h2>Profile</h2>
+<p>
+  <strong>14 年</strong>軟體開發經驗。前 12 年專注 Android/iOS/Unity App 開發（遊戲橘子、信驊科技、So-net 碩網等），
+  近 2 年轉型 <strong>AI Agent 系統工程</strong>，獨立設計並運營多 Agent 自主生產平台。
+  擅長將 LLM、Video Generation、TTS 等多個 AI 模型整合成端到端自動化 Pipeline，
+  並用 OpenClaw + Telegram 建構跨機器的多 Agent 協作系統。
+</p>
+
+<div class="highlight">
+  <strong>核心能力：</strong>
+  Multi-Agent Orchestration &bull; LLM Pipeline (GPT/Claude/Gemma) &bull; GPU VRAM Management &bull;
+  ComfyUI Workflow &bull; Video Generation (WAN 2.2) &bull; TTS/STT &bull; Telegram Bot &bull;
+  FastAPI &bull; Docker &bull; Android/Kotlin &bull; Unity/C#
+</div>
+
+<h2>AI Agent 專案 — 多 Agent 自主生產平台 <span class="timeline">2025/12 ~ 現在</span></h2>
+<p><em>獨立開發運營 | OpenClaw + RTX 5090 32GB + Mac + Docker + FastAPI + Telegram</em></p>
+
+<h3>產品線一：AI 影片自動生產（Server）</h3>
+<div class="two-col">
+<div>
+<strong>多 Agent 協作</strong>
+<ul>
+  <li><strong>3 AI Agent</strong>：隊長(GPT-5.4) + 工程師(Gemma4 31B) + 素材獵人(Gemma4 31B)</li>
+  <li>混合模型路由：生產走雲端，對話走本地</li>
+  <li>Heartbeat 每 30 分鐘主動巡檢 5 項指標</li>
+  <li>TG 群組 3 bot 自然對話，不需 @mention</li>
+  <li>跨進程 dispatch 信號量 + session 管理</li>
+</ul>
+</div>
+<div>
+<strong>產出（全自動，0 人工）</strong>
+<ul>
+  <li>短影音 <span class="metric">12 主題</span>每日輪替</li>
+  <li>Real News 長影片 5-12 分鐘</li>
+  <li>原創貓咪短片 <span class="metric">20 段/支</span></li>
+  <li>經典電影貓臉版</li>
+  <li>4 語言自動字幕 + YouTube 自動上傳</li>
+</ul>
+</div>
+</div>
+
+<div class="highlight" style="font-size: 9pt;">
+<strong>Pipeline：</strong>LLM 編劇 → FLUX/HiDream 關鍵幀 → WAN 2.2 I2V 雙階段 → SeedVR2 1080p + RIFE 24fps → CosyVoice3 TTS + BGM → Whisper 混合字幕 → YouTube 上傳
+</div>
+
+<strong>技術亮點</strong>
+<ul>
+  <li><span class="metric">10+ AI 模型</span>在 32GB GPU 序列化 VRAM 管理（ComfyUI ↔ Ollama ↔ CosyVoice）</li>
+  <li>GGUF binary patch 解決 Ollama context 膨脹 + 3 層 VRAM 防禦 + watchdog 自動修復</li>
+  <li>11 項 Vision LLM 品質閘門 + Self-Refine 回饋迴路</li>
+  <li>Claude Daemon HTTP API + stream-json fallback + systemd watchdog</li>
+  <li><span class="metric">47 條</span> Lessons Learned 從生產事故提煉</li>
+</ul>
+
+<h3>產品線二：加密貨幣研究系統（Mac）</h3>
+<ul>
+  <li>OpenClaw Agent + GPT-5.4，<strong>8 個 cron job</strong>（每 10 分鐘追蹤 + 日報 ×3）</li>
+  <li>雙帳戶模擬：100U 本地 + 1000U Binance Futures Testnet，三層驗證</li>
+  <li>Research Context 驅動決策，嚴格來源分級（官方 > 數據 > 媒體 > 社群）</li>
+</ul>
+
+<h3>產品線三：部落格自動發布（Mac）</h3>
+<ul>
+  <li><strong>三平台</strong>（Substack / Medium / vocus），Auto Rewrite Until Pass</li>
+  <li>21 個 Python 腳本 + Chrome 自動操作 + 52 份 Spec/Runbook SOP</li>
+</ul>
+
+<h3>關鍵數字</h3>
+<div class="two-col">
+<div>
+<table>
+  <tr><td>AI Agent</td><td class="metric">4 個（3+1 跨機器）</td></tr>
+  <tr><td>影片產品線</td><td class="metric">12+ 主題每日生產</td></tr>
+  <tr><td>AI 模型</td><td class="metric">10+ 個序列化運行</td></tr>
+  <tr><td>自動字幕</td><td class="metric">4 語言</td></tr>
+</table>
+</div>
+<div>
+<table>
+  <tr><td>Cron 排程</td><td class="metric">15+ 個</td></tr>
+  <tr><td>Python 腳本</td><td class="metric">50+ 個</td></tr>
+  <tr><td>Lessons Learned</td><td class="metric">47 條</td></tr>
+  <tr><td>SOP 文件</td><td class="metric">70+ 份</td></tr>
+</table>
+</div>
+</div>
+
+<div class="page-break"></div>
+
+<h2>工作經歷</h2>
+
+<h3>資深軟體工程師 — AI Agent 開發 <span class="timeline">2025/12 ~ 現在 (5 個月+)</span></h3>
+<p><em>網際網路相關業 | 台北市</em></p>
+<ul>
+  <li>Claude Code / Codex 編程自動化 + Python 開發</li>
+  <li>部署 OpenClaw 多 Agent 系統（Server + Mac 雙機器）</li>
+  <li>設計開源影音自動化 Pipeline，從選題到 YouTube 上傳全自動</li>
+  <li>多 Agent 派發、沙盒運行、Telegram 協作</li>
+</ul>
+
+<h3>資深程式設計師 — 金俊數位行銷 <span class="timeline">2024/9 ~ 2025/10 (1年2月)</span></h3>
+<p><em>Android 工程師 | 台中市 | 100~500 人</em></p>
+<ul>
+  <li>AI 星座 App：MVVM → Clean Architecture 重構，Kotlin，從無到有獨立開發</li>
+</ul>
+
+<h3>Senior Android Engineer — 保克曼 <span class="timeline">2023/5 ~ 2024/5 (1年1月)</span></h3>
+<p><em>Android 工程師 | 台北市內湖 | 30~100 人</em></p>
+<ul>
+  <li>原生遊戲 App（MVVM, Paging, Flow）、原生直播 App（推流+特效 SDK）、影音平台 App（Compose）</li>
+  <li>CI/CD 協助處理，LiveData→Flow 遷移</li>
+</ul>
+
+<h3>資深工程師 — 宇泰華科技 <span class="timeline">2022/11 ~ 2023/3 (5月)</span></h3>
+<p><em>Playsee 社群軟體 | Flutter + Android + Kotlin</em></p>
+<ul>
+  <li>DM 功能重構 + 新 UI 開發，Flutter Android Channel，crash 除錯（adb）</li>
+</ul>
+
+<h3>資深工程師 — 富智捷 <span class="timeline">2021/12 ~ 2022/10 (11月)</span></h3>
+<p><em>消費性電子 | 100~500 人</em></p>
+<ul>
+  <li>家用唾液篩檢機 App（Kotlin/Java），技術債重構</li>
+  <li>智能車載 with Stellantis（Unity + C# + JNI + C++ + Java），架構 POC</li>
+</ul>
+
+<h3>高級 Android 工程師 — 聖霏 <span class="timeline">2020/5 ~ 2021/11 (1年7月)</span></h3>
+<p><em>國外益智遊戲 App | Kotlin/Java，Java→Kotlin 遷移，兩周一次更版</em></p>
+
+<h3>資深工程師（Android）— 信驊科技 <span class="timeline">2017/3 ~ 2019/11 (2年9月)</span></h3>
+<p><em>IC 設計 | Cupola360 Camera App</em></p>
+<ul>
+  <li>從無到有開發 360 Camera Android App，硬體 API 對接，OpenGL，RTMP streaming</li>
+  <li>Facebook/YouTube 直播，影片/照片編輯，DataBinding，APK 優化</li>
+  <li>Google Play 上架：Cupola360</li>
+</ul>
+
+<h3>Senior Software Developer — 荃方科技 <span class="timeline">2016/9 ~ 2017/3 (7月)</span></h3>
+<p><em>聊天軟體（WebSocket + REST），Docker Gitlab 架設，Jenkins CI/CD</em></p>
+
+<h3>軟體工程師 — So-net 台灣碩網 <span class="timeline">2014/6 ~ 2016/7 (2年2月)</span></h3>
+<p><em>Unity + Android | 問答RPG 魔法使與黑貓維茲（Google Play + App Store）</em></p>
+<ul>
+  <li>日本授權手遊在地化 + 台灣版新功能，Unity Editor Tool，數據分析 SDK 介接</li>
+</ul>
+
+<h3>程式設計師 — 遊戲橘子 <span class="timeline">2013/5 ~ 2014/5 (1年1月)</span></h3>
+<p><em>500+ 人 | 員工點餐 App、緊急通報 App、第三方金流 SDK</em></p>
+
+<h3>Android 程式設計師 — 智盟科技 <span class="timeline">2011/2 ~ 2013/3 (2年2月)</span></h3>
+<p><em>mAgent 行動華佐、保險大師（PhoneGap 跨平台）、理財計算機 — 均 Google Play 上架</em></p>
+
+<h2>技術棧</h2>
+<table>
+  <tr><th>類別</th><th>技術</th></tr>
+  <tr><td>AI Agent</td><td>OpenClaw Multi-Agent, Heartbeat, Dispatch Queue, Claude Code/Codex</td></tr>
+  <tr><td>LLM</td><td>GPT-5.4, Gemma4:31b (Ollama), Claude Sonnet, 三層 fallback</td></tr>
+  <tr><td>AI 生成</td><td>ComfyUI, FLUX, HiDream, WAN 2.2 I2V/S2V, SeedVR2, RIFE</td></tr>
+  <tr><td>TTS/STT</td><td>CosyVoice3, Whisper turbo</td></tr>
+  <tr><td>Mobile</td><td>Android (Kotlin/Java), Flutter, Unity (C#), Jetpack Compose</td></tr>
+  <tr><td>Backend</td><td>FastAPI, Python asyncio, SQLite, EventBus SSE</td></tr>
+  <tr><td>Frontend</td><td>Phaser.js, HTML/CSS/JS</td></tr>
+  <tr><td>DevOps</td><td>Docker, systemd, Jenkins, Gitlab, Tailscale VPN</td></tr>
+  <tr><td>通訊</td><td>Telegram 3-Bot Bridge, WebSocket</td></tr>
+  <tr><td>金融</td><td>Binance Futures API + Testnet</td></tr>
+</table>
+
+<h2>學歷 / 證照</h2>
+<p>大仁科技大學 資訊工程系 四技畢業（2006~2010）<br>
+丙級電腦硬體裝修技術士（勞動部）</p>
+
+<div class="small" style="margin-top: 16px; text-align: center;">
+  Updated 2026-04-10 | github.com/AndyHuang1984
+</div>
+
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>AI Agent Portfolio — 黃詣超</title>
+<style>
+  @page { size: A4; margin: 22mm 20mm; }
+  * { box-sizing: border-box; }
+  body { font-family: "Noto Sans CJK TC", "Microsoft JhengHei", sans-serif; font-size: 10pt; line-height: 1.45; color: #e8e8e8; background: #0d1117; max-width: 210mm; margin: 0 auto; padding: 0 2mm; }
+  h1 { font-size: 24pt; margin: 0; color: #fff; font-weight: 800; }
+  h2 { font-size: 14pt; color: #58a6ff; margin: 14px 0 6px; border-bottom: 1px solid #30363d; padding-bottom: 3px; }
+  h3 { font-size: 11pt; color: #c9d1d9; margin: 8px 0 4px; }
+  p, li { color: #b0b8c1; }
+  a { color: #58a6ff; text-decoration: none; }
+
+  /* Keep blocks together */
+  .no-break { break-inside: avoid; page-break-inside: avoid; }
+
+  .hero { background: linear-gradient(135deg, #161b22 0%, #0d1117 50%, #1a1e2e 100%); padding: 24px 20px 16px; border-radius: 10px; margin-bottom: 12px; border: 1px solid #30363d; }
+  .hero-sub { font-size: 11pt; color: #8b949e; margin: 2px 0 8px; }
+  .hero-tags { margin: 6px 0; }
+  .tag { display: inline-block; background: rgba(56,139,253,0.15); color: #58a6ff; font-size: 8.5pt; padding: 2px 8px; border-radius: 10px; margin: 2px 2px; border: 1px solid rgba(56,139,253,0.3); }
+  .tag-green { background: rgba(63,185,80,0.15); color: #3fb950; border-color: rgba(63,185,80,0.3); }
+  .tag-purple { background: rgba(188,140,255,0.15); color: #bc8cff; border-color: rgba(188,140,255,0.3); }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 10px 12px; margin: 6px 0; break-inside: avoid; }
+  .card-title { font-size: 10.5pt; color: #fff; font-weight: 600; margin-bottom: 4px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+  .grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 6px; }
+  .img-card { border-radius: 6px; overflow: hidden; border: 1px solid #30363d; break-inside: avoid; }
+  .img-card img { width: 100%; height: auto; display: block; }
+  .img-card .caption { background: #161b22; padding: 3px 6px; font-size: 8pt; color: #8b949e; }
+  .metric-box { text-align: center; padding: 8px 4px; }
+  .metric-num { font-size: 20pt; font-weight: 800; color: #58a6ff; display: block; }
+  .metric-label { font-size: 8pt; color: #8b949e; }
+  .flow-box { background: #1c2128; border-radius: 6px; padding: 8px 12px; font-size: 9pt; color: #8b949e; border: 1px solid #30363d; margin: 4px 0; }
+  .flow-arrow { color: #58a6ff; font-weight: bold; }
+  table { width: 100%; border-collapse: collapse; margin: 4px 0; font-size: 9pt; }
+  th { background: #1c2128; color: #c9d1d9; text-align: left; padding: 4px 6px; border: 1px solid #30363d; }
+  td { padding: 4px 6px; border: 1px solid #30363d; color: #b0b8c1; }
+  .page-break { page-break-before: always; }
+  .avatar-row { display: flex; gap: 8px; align-items: center; margin: 4px 0; }
+  .avatar-row img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #30363d; }
+  .avatar-info { flex: 1; }
+  .avatar-name { font-size: 10pt; color: #fff; font-weight: 600; }
+  .avatar-role { font-size: 8.5pt; color: #8b949e; }
+  .yt-link { background: #1c2128; border: 1px solid #30363d; border-radius: 6px; padding: 6px 12px; display: inline-block; margin: 3px 0; font-size: 9.5pt; }
+  .yt-link a { color: #ff4444; font-weight: 600; }
+  ul { margin: 2px 0 4px 14px; padding: 0; font-size: 9pt; }
+  li { margin-bottom: 1px; color: #b0b8c1; }
+  .small { font-size: 8pt; color: #484f58; text-align: center; margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<!-- ==================== PAGE 1: HERO + ARCHITECTURE + YOUTUBE ==================== -->
+
+<div class="hero no-break">
+  <h1>AI Agent 自主生產平台</h1>
+  <div class="hero-sub">黃詣超 Andy Huang — Portfolio 2026</div>
+  <p style="color:#c9d1d9; margin: 6px 0; font-size: 10pt;">
+    一人團隊 + 4 個 AI Agent，橫跨兩台機器，每天自動生產影片、追蹤加密貨幣、發布部落格。<br>
+    從 App 開發 14 年經驗轉型，獨立設計並運營完整的多 Agent 自主系統。
+  </p>
+  <div class="hero-tags">
+    <span class="tag">OpenClaw Multi-Agent</span>
+    <span class="tag">LLM Pipeline</span>
+    <span class="tag">ComfyUI</span>
+    <span class="tag">WAN 2.2 Video Gen</span>
+    <span class="tag-green tag">GPT-5.4</span>
+    <span class="tag-green tag">Gemma4 31B</span>
+    <span class="tag-purple tag">Claude Sonnet</span>
+    <span class="tag">Telegram 3-Bot</span>
+    <span class="tag">FastAPI</span>
+    <span class="tag">Docker</span>
+  </div>
+</div>
+
+<div class="grid-4 no-break">
+  <div class="card metric-box"><span class="metric-num">4</span><span class="metric-label">AI Agents 跨 2 台機器</span></div>
+  <div class="card metric-box"><span class="metric-num">12+</span><span class="metric-label">影片主題自動輪替</span></div>
+  <div class="card metric-box"><span class="metric-num">10+</span><span class="metric-label">AI 模型序列化運行</span></div>
+  <div class="card metric-box"><span class="metric-num">0</span><span class="metric-label">人工介入（全自動）</span></div>
+</div>
+
+<div class="card no-break">
+  <div class="card-title">系統架構</div>
+  <div class="flow-box" style="font-size: 9pt; line-height: 1.6;">
+    <strong style="color:#58a6ff;">Telegram 群組（唯一主場）</strong> ↕ 老闆對話 / Agent 自然閒聊<br>
+    <strong style="color:#3fb950;">🖥️ Server (RTX 5090 32GB)</strong>
+    克蕾(隊長/GPT-5.4) + 愛達(工程師/31B) + 艾米(素材獵人/31B) → 夜間 01:00 全自動 Pipeline × 3 → YouTube<br>
+    <strong style="color:#bc8cff;">💻 Mac (OpenClaw)</strong>
+    Agent(GPT-5.4) + 8 Cron → 加密貨幣研究 + Telegram 短報 + 部落格三平台發布
+  </div>
+</div>
+
+<h2>YouTube 頻道 — AI 全自動生成影片</h2>
+<div class="grid-3 no-break">
+  <div class="img-card"><img src="portfolio_assets/yt_00000.png"><div class="caption">AI 原創貓咪短片</div></div>
+  <div class="img-card"><img src="portfolio_assets/yt_00001.png"><div class="caption">AI 生成影片</div></div>
+  <div class="img-card"><img src="portfolio_assets/yt_00002.png"><div class="caption">AI 生成影片</div></div>
+</div>
+<div class="grid-3 no-break" style="margin-top:6px;">
+  <div class="img-card"><img src="portfolio_assets/yt_00003.png"><div class="caption">YouTube 已上架</div></div>
+  <div class="img-card"><img src="portfolio_assets/yt_00004.png"><div class="caption">YouTube 已上架</div></div>
+  <div style="display:flex; align-items:center; justify-content:center;">
+    <div class="yt-link">
+      <a href="https://www.youtube.com/@diaryAndi">youtube.com/@diaryAndi</a><br>
+      <span style="font-size:8pt; color:#8b949e;">全自動生產 + 上傳</span>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 2: AGENT TEAM + PIPELINE + SAMPLES ==================== -->
+<div class="page-break"></div>
+
+<h2>AI Agent 團隊 + 影片生產 Pipeline</h2>
+
+<div class="grid-3 no-break">
+  <div class="card">
+    <div class="avatar-row">
+      <img src="portfolio_assets/avatar_cleo.png" alt="克蕾">
+      <div class="avatar-info">
+        <div class="avatar-name">克蕾 Cleo 👸</div>
+        <div class="avatar-role">隊長 / GPT-5.4</div>
+      </div>
+    </div>
+    <p style="font-size:8.5pt;">排程調度、品質把關、Heartbeat 主動巡檢、TG 主持</p>
+  </div>
+  <div class="card">
+    <div class="avatar-row">
+      <img src="portfolio_assets/avatar_ada.png" alt="愛達">
+      <div class="avatar-info">
+        <div class="avatar-name">愛達 Ada 💻</div>
+        <div class="avatar-role">工程師 / Gemma4 31B</div>
+      </div>
+    </div>
+    <p style="font-size:8.5pt;">Pipeline 維護、Bug 修復、QA 品質審查</p>
+  </div>
+  <div class="card">
+    <div class="avatar-row">
+      <img src="portfolio_assets/avatar_amelia.png" alt="艾米">
+      <div class="avatar-info">
+        <div class="avatar-name">艾米 Amelia 🔍</div>
+        <div class="avatar-role">素材獵人 / Gemma4 31B</div>
+      </div>
+    </div>
+    <p style="font-size:8.5pt;">YouTube 搜尋、BGM 蒐集、爆款分析</p>
+  </div>
+</div>
+
+<div class="no-break">
+  <h3>端到端 Pipeline（全自動，0 人工介入）</h3>
+  <div class="flow-box">
+    LLM 編劇 (GPT-5.4) <span class="flow-arrow">→</span> FLUX/HiDream 關鍵幀
+    <span class="flow-arrow">→</span> WAN 2.2 I2V 雙階段
+    <span class="flow-arrow">→</span> SeedVR2 1080p + RIFE 24fps
+    <span class="flow-arrow">→</span> CosyVoice3 TTS + BGM
+    <span class="flow-arrow">→</span> Whisper 混合字幕 (4語)
+    <span class="flow-arrow">→</span> YouTube 上傳
+  </div>
+  <table>
+    <tr><th>產品</th><th>時長</th><th>頻率</th><th>特色</th></tr>
+    <tr><td>短影音 (12 主題)</td><td>15-60s</td><td>每日</td><td>做菜貓/武俠/Cosplay/科學家/健身...</td></tr>
+    <tr><td>Real News</td><td>5-12 min</td><td>每週 2</td><td>自動選題 + Self-Refine 迴路</td></tr>
+    <tr><td>原創貓咪</td><td>60s</td><td>每日</td><td>20 段多角色 + TTS + 說話人分離</td></tr>
+    <tr><td>經典電影貓臉</td><td>30-90s</td><td>不定期</td><td>周星馳 → 貓臉替換 + 原始配音</td></tr>
+  </table>
+</div>
+
+<h3>AI 生成作品（Keyframe → Video）</h3>
+<div class="grid-4 no-break">
+  <div class="img-card"><img src="portfolio_assets/keyframe_cat_01.png"><div class="caption">原創 — 科學家</div></div>
+  <div class="img-card"><img src="portfolio_assets/keyframe_cat_05.png"><div class="caption">原創 — 場景</div></div>
+  <div class="img-card"><img src="portfolio_assets/keyframe_movie_02.png"><div class="caption">電影貓臉版</div></div>
+  <div class="img-card"><img src="portfolio_assets/keyframe_movie_08.png"><div class="caption">電影貓臉版</div></div>
+</div>
+
+<div class="no-break">
+  <h3>技術亮點</h3>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">GPU VRAM 管理</div>
+      <p style="font-size:8.5pt;">單張 RTX 5090 32GB 跑 10+ AI 模型。ComfyUI ↔ Ollama ↔ CosyVoice 原子切換。GGUF binary patch + 3 層 VRAM 防禦 + watchdog 自動修復。</p>
+    </div>
+    <div class="card">
+      <div class="card-title">混合模型路由</div>
+      <p style="font-size:8.5pt;">生產走 GPT-5.4，對話走本地 31B，Claude Daemon 備援。OpenClaw Gateway 統一路由，三層 fallback。</p>
+    </div>
+    <div class="card">
+      <div class="card-title">TG 多 Agent 自然對話</div>
+      <p style="font-size:8.5pt;">3 Bot 共享上下文，不需 @mention 自動接話。Follow-up + Rate limiter + cooldown + quiet hours。</p>
+    </div>
+    <div class="card">
+      <div class="card-title">品質閘門 + Self-Refine</div>
+      <p style="font-size:8.5pt;">11 項 Vision LLM 檢查。Self-Refine 反覆修正 ≤30%。47 條 Lessons Learned。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 3: OFFICE + CRYPTO + BLOG + OPS ==================== -->
+<div class="page-break"></div>
+
+<h2>虛擬辦公室 — Phaser.js 即時監控</h2>
+<div class="grid-2 no-break">
+  <div class="img-card"><img src="portfolio_assets/shrimp_office.png"><div class="caption">蝦隊辦公室 — Agent 即時動態 + 任務狀態</div></div>
+  <div class="img-card"><img src="portfolio_assets/webui_dashboard.png"><div class="caption">WebUI Dashboard — Pipeline 監控面板</div></div>
+</div>
+<div class="card no-break" style="margin-top:6px;">
+  <div class="grid-2">
+    <div>
+      <ul>
+        <li>程式化像素美術（4 主題切換 + crossfade）</li>
+        <li>19 幀/角色，11 子狀態閒置行為狀態機</li>
+        <li>SSE EventBus 即時推送</li>
+      </ul>
+    </div>
+    <div>
+      <ul>
+        <li>點擊角色 → 資訊卡（狀態/任務）</li>
+        <li>Kanban 看板 + 即時聊天</li>
+        <li>會議系統 + 專屬對話氣泡</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="grid-2 no-break" style="margin-top:6px;">
+  <div class="img-card"><img src="portfolio_assets/office_cyberpunk.png"><div class="caption">Cyberpunk 主題（程式繪製）</div></div>
+  <div class="img-card"><img src="portfolio_assets/office_sakura.png"><div class="caption">Sakura 主題（程式繪製）</div></div>
+</div>
+
+<div class="no-break">
+  <h2>產品線二：加密貨幣研究（Mac）</h2>
+  <div class="card">
+    <div class="grid-2">
+      <div>
+        <div class="card-title">雙帳戶模擬 + Testnet</div>
+        <ul>
+          <li>100U 本地 + 1000U Binance Futures Testnet</li>
+          <li>Research Context 驅動決策</li>
+          <li>來源分級（官方 > 數據 > 媒體 > 社群）</li>
+          <li>每日 3 輪 Telegram 短報</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card-title">核心模組（8 cron jobs）</div>
+        <ul>
+          <li>market_snapshot → research_context</li>
+          <li>decision_context → risk_engine</li>
+          <li>strategy_engine → report_builder</li>
+          <li>telegram_formatter → 自動發送</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="no-break">
+  <h2>產品線三：部落格自動發布（Mac）</h2>
+  <div class="card">
+    <div class="grid-2">
+      <div>
+        <div class="card-title">三平台 Pipeline</div>
+        <ul>
+          <li>Substack + Medium + vocus（方格子）</li>
+          <li>選題→草稿→品質閘門→平台改寫→發布</li>
+          <li>Auto Rewrite Until Pass</li>
+          <li>52 份 Spec/Runbook SOP</li>
+        </ul>
+      </div>
+      <div>
+        <div class="card-title">Chrome 自動化</div>
+        <ul>
+          <li>Peekaboo 座標校準 + 動作鏈</li>
+          <li>各平台發布配方（recipes/）</li>
+          <li>Dry-run 優先</li>
+          <li>21 個 Python 腳本</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== PAGE 4: TECH + OPS + APP HISTORY ==================== -->
+<div class="page-break"></div>
+
+<div class="no-break">
+  <h2>技術棧</h2>
+  <table>
+    <tr><th>類別</th><th>技術</th></tr>
+    <tr><td>AI Agent</td><td>OpenClaw Multi-Agent, Heartbeat, Dispatch Queue, Claude Code/Codex</td></tr>
+    <tr><td>LLM</td><td>GPT-5.4 / Gemma4:31b Q4 (Ollama) / Claude Sonnet — 三層 fallback</td></tr>
+    <tr><td>AI 生成</td><td>ComfyUI, FLUX.1, HiDream-I1, WAN 2.2 I2V/S2V, SeedVR2, RIFE</td></tr>
+    <tr><td>TTS / STT</td><td>CosyVoice3 Fun-0.5B / Whisper turbo hybrid</td></tr>
+    <tr><td>Mobile</td><td>Android (Kotlin/Java), Flutter, Unity (C#), Jetpack Compose</td></tr>
+    <tr><td>Backend</td><td>FastAPI, Python asyncio, SQLite, EventBus SSE</td></tr>
+    <tr><td>Frontend</td><td>Phaser.js, HTML/CSS/JS</td></tr>
+    <tr><td>DevOps</td><td>Docker, systemd, Jenkins, Gitlab, Tailscale VPN</td></tr>
+    <tr><td>通訊</td><td>Telegram 3-Bot Bridge (chat mode + follow-up)</td></tr>
+    <tr><td>金融</td><td>Binance Futures API + Testnet + Risk Engine</td></tr>
+  </table>
+</div>
+
+<div class="no-break">
+  <h2>系統維運自動化</h2>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">自動防護機制</div>
+      <ul>
+        <li>Heartbeat 每 30 分鐘 5 項主動巡檢</li>
+        <li>Watchdog 每 10 分鐘 Gateway + VRAM</li>
+        <li>Nightly 01:00 序列化 3 Pipeline</li>
+        <li>GGUF Auto-Patch + Session Auto-Clean</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">量化成果</div>
+      <ul>
+        <li>15+ Cron Jobs（Server 7 + Mac 8）</li>
+        <li>50+ Python 腳本 / 70+ SOP 文件</li>
+        <li>47 條 Lessons Learned</li>
+        <li>每日 38 次自動巡檢</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="no-break">
+  <h2>App 開發經歷（14 年精選）</h2>
+  <div class="grid-2">
+    <div class="card">
+      <div class="card-title">信驊科技 — Cupola360 <span style="font-size:8pt;color:#8b949e;">2017-2019</span></div>
+      <p style="font-size:8.5pt;">360 Camera App 從零開發。硬體 API、OpenGL、RTMP、FB/YT 直播。Play 上架。</p>
+      <div><span class="tag">Java</span><span class="tag">OpenGL</span><span class="tag">RTMP</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">So-net — 黑貓維茲 <span style="font-size:8pt;color:#8b949e;">2014-2016</span></div>
+      <p style="font-size:8.5pt;">日本授權 Unity 手遊在地化 + 台灣版。Play + App Store 雙平台。</p>
+      <div><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">iOS</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">富智捷 — 智能車載 <span style="font-size:8pt;color:#8b949e;">2021-2022</span></div>
+      <p style="font-size:8.5pt;">with Stellantis。Unity + Android 車載介面，JNI + C++，架構 POC。</p>
+      <div><span class="tag">Unity</span><span class="tag">C++</span><span class="tag">JNI</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">金俊數位 — AI 星座 App <span style="font-size:8pt;color:#8b949e;">2024-2025</span></div>
+      <p style="font-size:8.5pt;">MVVM → Clean Architecture 重構。Kotlin 從零獨立開發。</p>
+      <div><span class="tag">Kotlin</span><span class="tag">MVVM</span><span class="tag">Clean Arch</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">遊戲橘子 — 金流 SDK <span style="font-size:8pt;color:#8b949e;">2013-2014</span></div>
+      <p style="font-size:8.5pt;">第三方金流 SDK 整合，供手遊介接。獨立開發員工點餐+緊急通報 App。</p>
+      <div><span class="tag">Java</span><span class="tag">SDK</span><span class="tag">Linux</span></div>
+    </div>
+    <div class="card">
+      <div class="card-title">保克曼 — 遊戲+直播 <span style="font-size:8pt;color:#8b949e;">2023-2024</span></div>
+      <p style="font-size:8.5pt;">原生遊戲 App + 直播推流 SDK + 影音平台 Compose。CI/CD。</p>
+      <div><span class="tag">Kotlin</span><span class="tag">Compose</span><span class="tag">Flow</span></div>
+    </div>
+  </div>
+</div>
+
+<div style="margin-top: 12px;" class="no-break">
+  <div class="yt-link">
+    <a href="https://www.youtube.com/@diaryAndi">YouTube @diaryAndi</a>
+  </div>
+  &nbsp;
+  <div class="yt-link">
+    <a href="https://github.com/AndyHuang1984" style="color:#c9d1d9;">GitHub: AndyHuang1984</a>
+  </div>
+
+  <div class="small">
+    黃詣超 Andy Huang | mmn0204520@gmail.com | 0973-090-299 | 新北市板橋區<br>
+    Portfolio generated 2026-04-10
+  </div>
+</div>
+
+</body>
+</html>
