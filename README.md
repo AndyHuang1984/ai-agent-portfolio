@@ -53,13 +53,37 @@ LLM Scripting (GPT-5.4)
 
 **10+ AI models** sequenced on a single 32GB GPU with automatic VRAM management.
 
+## Dual-Machine Architecture
+
+### Server (Ubuntu Linux, RTX 5090 32GB)
+- **3 AI Agents** via OpenClaw: captain (GPT-5.4), coder (Gemma4 31B local), scout (Gemma4 31B local)
+- **Nightly pipeline** 01:00 自動啟動，序列化 3 條生產線，0 人工介入
+- **Docker services**: ComfyUI, Ollama, CosyVoice TTS, ChromaDB, SearXNG
+- **Claude Code** as development assistant ("蝦師"), remote via `claude.ai/code`
+- **Claude Daemon** HTTP server (localhost:5050) for pipeline LLM fallback
+
+### Mac (MacBook Air M2 24GB, OpenClaw)
+- **1 AI Agent** (GPT-5.4) — 加密貨幣研究 + 部落格自動發布
+- **9 cron jobs**: crypto tracker (10min), daily report (08:00/23:00), blog prep (Sun/Tue/Fri), memory rebuild
+- **Crypto research**: Binance Futures Testnet 雙帳戶模擬（100U + 1000U），Research Context 驅動決策
+- **Blog auto-publish**: 3 platforms (Substack / Medium / vocus)，Auto Rewrite Until Pass，Chrome 自動操作
+- **Claude Daemon** (localhost:5050) + OpenClaw gateway (GPT-5.4)
+- **Memory Wiki**: bridge mode, knowledge ingestion + compile cron
+
+### Cross-Machine Integration
+- **Tailscale VPN** mesh networking（Server ↔ Mac 互通）
+- **SSH remote operations**: Server 端 Claude Code 可直接 SSH 操作 Mac
+- **Telegram 統一入口**: 所有 agent 共用 TG 群組，跨機器即時通訊
+- **`sync_workspace.sh`**: bootstrap 文件同步到所有 agent workspace（hard copy，非 symlink）
+
 ## Key Technical Highlights
 
 ### Multi-Agent Orchestration
-- **3 AI Agents** with distinct roles: captain (planning), coder (execution), scout (research)
+- **4 AI Agents** across 2 machines with distinct roles
 - Cross-process dispatch with `fcntl.flock` semaphore (N=2 concurrent, 10s min interval)
 - Persistent sessions with session lock quarantine + automatic fallback
 - Heartbeat-driven: every 30 min auto-wake, check 5 health indicators
+- Telegram 3-bot natural chat — agents reply without @mention
 
 ### GPU VRAM Management (Single GPU, Multiple Services)
 - ComfyUI (WAN 2.2 ~20GB) ↔ Ollama (Gemma4 31B ~26GB) ↔ CosyVoice (0.5B ~3GB)
@@ -72,6 +96,12 @@ LLM Scripting (GPT-5.4)
 - Nightly orchestrator: 3 pipelines serialized, process group kill, CosyVoice recovery
 - Quality gates: 11-point Vision LLM check + Self-Refine feedback loop
 - TTS 3-tier retry: seed rotation → LLM text rewrite → best-effort with cut repair
+
+### Mac Automation
+- OpenClaw cron: crypto cycle tracking every 10 min, morning/night reports via Telegram
+- Scheduler rescue system: heartbeat fallback if cron misses window
+- Daily briefing state machine: day rollover + proactive task discovery
+- Chrome desktop automation: `osascript` + `screencapture` for blog publishing
 
 ## Code Samples
 
