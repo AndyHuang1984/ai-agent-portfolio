@@ -17,8 +17,8 @@
   ↓ Telegram 群組
   ├── 🖥️ Server (RTX 5090 32GB)          ├── 💻 Mac (OpenClaw)
   │   克蕾（隊長/GPT-5.4）                │   獨立 Agent（GPT-5.4）
-  │   愛達（工程師/Gemma4 31B 本地）       │   ↓
-  │   艾米（素材獵人/Gemma4 31B 本地）     │   加密貨幣研究 + 部落格
+  │   愛達（工程師/Gemma 4 31B 本地）       │   ↓
+  │   艾米（素材獵人/Gemma 4 31B 本地）     │   加密貨幣研究 + 部落格
   │   ↓                                   │   → Telegram 報告
   │   夜間全自動 Pipeline                  │   → 三平台自動發布
   │   → YouTube 自動上傳                  │
@@ -56,7 +56,7 @@ LLM Scripting (GPT-5.4)
 ## Dual-Machine Architecture
 
 ### Server (Ubuntu Linux, RTX 5090 32GB)
-- **3 AI Agents** via OpenClaw: captain (GPT-5.4), coder (Gemma4 31B local), scout (Gemma4 31B local)
+- **3 AI Agents** via OpenClaw: captain (GPT-5.4), coder (Gemma 4 31B local), scout (Gemma 4 31B local)
 - **Nightly pipeline** 01:00 自動啟動，序列化 3 條生產線，0 人工介入
 - **Docker services**: ComfyUI, Ollama, CosyVoice TTS, ChromaDB, SearXNG
 - **Claude Code** as development assistant ("蝦師"), remote via `claude.ai/code`
@@ -86,7 +86,7 @@ LLM Scripting (GPT-5.4)
 - Telegram 3-bot natural chat — agents reply without @mention
 
 ### GPU VRAM Management (Single GPU, Multiple Services)
-- ComfyUI (WAN 2.2 ~20GB) ↔ Ollama (Gemma4 31B ~26GB) ↔ CosyVoice (0.5B ~3GB)
+- ComfyUI (WAN 2.2 ~20GB) ↔ Ollama (Gemma 4 31B ~26GB) ↔ CosyVoice (0.5B ~3GB)
 - Automatic model swap: `/free` → unload → load → health verify
 - GGUF binary patching for context window control (262K → 8K)
 - 3-layer defense: GGUF patch + models.json + watchdog auto-repair
@@ -140,7 +140,7 @@ LLM Scripting (GPT-5.4)
 | Category | Technologies |
 |----------|-------------|
 | **AI Agent** | OpenClaw Multi-Agent, Heartbeat, Dispatch Queue, Claude Code |
-| **LLM** | GPT-5.4, Gemma4 31B (Ollama), Claude, 3-layer fallback |
+| **LLM** | GPT-5.4, Gemma 4 31B (Ollama), Claude, 3-layer fallback |
 | **AI Generation** | ComfyUI, FLUX, HiDream, WAN 2.2 I2V/S2V, SeedVR2, RIFE |
 | **TTS/STT** | CosyVoice3 0.5B, Whisper turbo |
 | **Backend** | FastAPI, Python asyncio, SQLite, EventBus SSE |
