@@ -99,7 +99,6 @@ LLM Scripting (GPT-5.4)
 
 ### Claude Code — 系統開發核心
 - **Claude Code (Opus)** 是整個平台的主要開發者，50+ 腳本、70+ SOP、47 條 Lessons Learned 皆協作完成
-- 透過 `claude.ai/code` 遠端操作雙機器（Server + SSH Mac），開發、部署、除錯一條龍
 - **Claude Daemon** 常駐雙機器，作為 pipeline LLM fallback（Gateway 失敗自動接手）
 
 ### Mac Automation
