@@ -56,7 +56,7 @@ LLM Scripting (GPT-5.4)
 ## Dual-Machine Architecture
 
 ### Server (Ubuntu Linux, RTX 5090 32GB)
-- **3 AI Agents** via OpenClaw: captain (GPT-5.4), coder (Gemma 4 31B local), scout (Gemma 4 31B local)
+- **3 AI Agents** via OpenClaw: captain (GPT-5.4), coder (GPT-5.4-mini), scout (GPT-5.4-mini)
 - **Nightly pipeline** 01:00 自動啟動，序列化 3 條生產線，0 人工介入
 - **Docker services**: ComfyUI, Ollama, CosyVoice TTS, ChromaDB, SearXNG
 - **Claude Code** as development assistant ("蝦師"), remote via `claude.ai/code`
@@ -86,7 +86,7 @@ LLM Scripting (GPT-5.4)
 - Telegram 3-bot natural chat — agents reply without @mention
 
 ### GPU VRAM Management (Single GPU, Multiple Services)
-- ComfyUI (WAN 2.2 ~20GB) ↔ Ollama (Gemma 4 31B ~26GB) ↔ CosyVoice (0.5B ~3GB)
+- ComfyUI (WAN 2.2 ~20GB) ↔ Ollama (Gemma 4 31B fallback ~26GB) ↔ CosyVoice (0.5B ~3GB)
 - Automatic model swap: `/free` → unload → load → health verify
 - GGUF binary patching for context window control (262K → 8K)
 - 3-layer defense: GGUF patch + models.json + watchdog auto-repair
@@ -153,7 +153,7 @@ LLM Scripting (GPT-5.4)
 |----------|-------------|
 | **AI Agent** | OpenClaw Multi-Agent, Heartbeat, Dispatch Queue |
 | **Development** | Claude Code (Opus) remote, Claude Daemon (fallback LLM), Deep Plan methodology |
-| **LLM** | GPT-5.4 (pipeline), Gemma 4 31B (Ollama, agent chat), Claude (daemon fallback) |
+| **LLM** | GPT-5.4 (pipeline + captain), GPT-5.4-mini (coder/scout), Gemma 4 31B (Ollama, local fallback), Claude (daemon fallback) |
 | **AI Generation** | ComfyUI, FLUX, HiDream, WAN 2.2 I2V/S2V, SeedVR2, RIFE |
 | **TTS/STT** | CosyVoice3 0.5B, Whisper turbo |
 | **Backend** | FastAPI, Python asyncio, SQLite, EventBus SSE |
