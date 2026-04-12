@@ -1,12 +1,13 @@
 """
 GPU VRAM Management — 10+ AI Models on Single 32GB GPU
 
-Orchestrates model loading/unloading across ComfyUI, Ollama, and CosyVoice
-on a single RTX 5090 32GB. Each service needs exclusive VRAM access
-for its heaviest models.
+Orchestrates model loading/unloading across ComfyUI and CosyVoice
+on a single RTX 5090 32GB. LLM calls route through Hermes Agent
+gateway to OpenAI Codex (cloud), freeing GPU entirely for generation.
 
-Key challenge: ComfyUI (WAN 2.2 I2V ~20GB) vs Ollama (Gemma4 31B ~26GB)
-vs CosyVoice (0.5B ~3GB) cannot coexist simultaneously.
+History: Previously managed ComfyUI ↔ Ollama (Gemma4 31B ~26GB) ↔ CosyVoice
+VRAM contention. After Hermes migration (2026-04), local LLM removed —
+GPU dedicated to video generation + TTS.
 """
 
 import subprocess
@@ -17,7 +18,7 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# --- Service health checks ---
+# --- Service VRAM management ---
 
 def comfyui_free():
     """Release all ComfyUI models from VRAM."""
@@ -34,85 +35,24 @@ def comfyui_free():
         pass  # ComfyUI may not be running
 
 
-def ollama_unload(model: str = "gemma4:31b"):
-    """Unload Ollama model from VRAM (keep_alive=0)."""
-    try:
-        req = urllib.request.Request(
-            "http://localhost:11434/api/generate",
-            data=json.dumps({"model": model, "keep_alive": 0}).encode(),
-            headers={"Content-Type": "application/json"},
-            method="POST",
-        )
-        urllib.request.urlopen(req, timeout=10)
-        logger.info(f"Ollama: {model} unloaded")
-    except Exception:
-        pass
-
-
-def ollama_load(model: str = "gemma4:31b", num_ctx: int = 8192):
-    """Load Ollama model with VRAM verification."""
-    # Warmup request to trigger model loading
-    req = urllib.request.Request(
-        "http://localhost:11434/api/generate",
-        data=json.dumps({
-            "model": model,
-            "prompt": "hi",
-            "options": {"num_ctx": num_ctx, "num_predict": 1},
-        }).encode(),
-        headers={"Content-Type": "application/json"},
-        method="POST",
-    )
-    urllib.request.urlopen(req, timeout=120)
-
-    # Verify model is actually in GPU VRAM (not CPU offloaded)
-    _verify_ollama_vram(model, num_ctx)
-
-
-def _verify_ollama_vram(model: str, expected_ctx: int):
-    """
-    Critical: verify model loaded in GPU, not CPU.
-
-    Lesson #46: GGUF native context_length=262144 → KV cache exceeds VRAM
-    → entire model offloaded to CPU (size_vram=0) → 67 tok/s → ~2 tok/s.
-    3-layer defense: patch GGUF binary + models.json contextWindow + watchdog.
-    """
-    resp = urllib.request.urlopen("http://localhost:11434/api/ps", timeout=5)
-    data = json.loads(resp.read())
-
-    for m in data.get("models", []):
-        if model in m.get("name", ""):
-            vram = m.get("size_vram", 0)
-            ctx = m.get("context_length", 0)
-
-            if vram == 0:
-                raise RuntimeError(
-                    f"CRITICAL: {model} fully CPU offloaded (size_vram=0, ctx={ctx}). "
-                    f"Likely GGUF context too large. Run: patch_gguf_context.py --target {expected_ctx}"
-                )
-
-            if ctx > expected_ctx * 2:
-                logger.warning(f"{model} context {ctx} >> expected {expected_ctx}")
-
-            logger.info(f"Ollama: {model} healthy (vram={vram/1e9:.1f}GB, ctx={ctx})")
-            return
-
-    raise RuntimeError(f"{model} not found in Ollama running models")
-
-
 # --- High-level mode switches ---
 
 def switch_to_generation():
-    """Switch to video generation mode: unload LLM, free VRAM for ComfyUI."""
+    """Switch to video generation mode: free VRAM for ComfyUI."""
     logger.info("=== Switching to Generation mode ===")
-    ollama_unload()
+    # Post-migration: no Ollama to unload. VRAM is free by default.
 
 
-def switch_to_llm(model: str = "gemma4:31b"):
-    """Switch to LLM mode: free ComfyUI, stop CosyVoice, load Ollama."""
-    logger.info("=== Switching to LLM mode ===")
+def switch_to_llm(model=None):
+    """Switch to LLM mode: free ComfyUI, stop CosyVoice.
+
+    Note: Ollama/Gemma4 removed (2026-04 Hermes migration).
+    Agents now use OpenAI Codex via Hermes gateway, no local LLM needed.
+    """
+    logger.info("=== Switching to LLM mode (no-op: cloud LLM) ===")
     comfyui_free()
     cosyvoice_stop()
-    ollama_load(model)
+    return True
 
 
 def ensure_cosyvoice():

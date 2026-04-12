@@ -50,7 +50,7 @@
 
 <div class="highlight">
   <strong>核心能力：</strong>
-  Multi-Agent Orchestration &bull; LLM Pipeline (GPT/Claude/Gemma) &bull; GPU VRAM Management &bull;
+  Multi-Agent Orchestration &bull; LLM Pipeline (GPT/Claude) &bull; GPU VRAM Management &bull;
   ComfyUI Workflow &bull; Video Generation (WAN 2.2) &bull; TTS/STT &bull; Telegram Bot &bull;
   FastAPI &bull; Docker &bull; Android/Kotlin &bull; Unity/C#
 </div>
@@ -88,8 +88,8 @@
 
 <strong>技術亮點</strong>
 <ul>
-  <li><span class="metric">10+ AI 模型</span>在 32GB GPU 序列化 VRAM 管理（ComfyUI ↔ Ollama ↔ CosyVoice）</li>
-  <li>GGUF binary patch 解決 Ollama context 膨脹 + 3 層 VRAM 防禦 + watchdog 自動修復</li>
+  <li><span class="metric">10+ AI 模型</span>在 32GB GPU 序列化 VRAM 管理（ComfyUI ↔ CosyVoice，LLM 走雲端 Codex）</li>
+  <li>Hermes Agent 原生 gateway 取代 8,900+ 行自寫 dispatch/bridge 代碼（2026-04 從 OpenClaw 遷移）</li>
   <li>11 項 Vision LLM 品質閘門 + Self-Refine 回饋迴路</li>
   <li>Claude Daemon HTTP API + stream-json fallback + systemd watchdog</li>
   <li><span class="metric">47 條</span> Lessons Learned 從生產事故提煉</li>
@@ -97,7 +97,7 @@
 
 <h3>產品線二：加密貨幣研究系統（Mac）</h3>
 <ul>
-  <li>Hermes Agent Agent + GPT-5.4，<strong>8 個 cron job</strong>（每 10 分鐘追蹤 + 日報 ×3）</li>
+  <li>Hermes Agent + GPT-5.4，<strong>9 個 cron job</strong>（每 10 分鐘追蹤 + 日報 ×3 + blog pipeline）</li>
   <li>雙帳戶模擬：100U 本地 + 1000U Binance Futures Testnet，三層驗證</li>
   <li>Research Context 驅動決策，嚴格來源分級（官方 > 數據 > 媒體 > 社群）</li>
 </ul>
@@ -197,14 +197,14 @@
 <table>
   <tr><th>類別</th><th>技術</th></tr>
   <tr><td>AI Agent</td><td>Hermes Agent Multi-Agent, Heartbeat, Dispatch Queue, Claude Code/Codex</td></tr>
-  <tr><td>LLM</td><td>GPT-5.4, GPT-5.4-mini, Gemma 4 31B (Ollama fallback), Claude (Daemon fallback)</td></tr>
+  <tr><td>LLM</td><td>GPT-5.4 (OpenAI Codex), GPT-5.4-mini, Claude (Daemon fallback)</td></tr>
   <tr><td>AI 生成</td><td>ComfyUI, FLUX, HiDream, WAN 2.2 I2V/S2V, SeedVR2, RIFE</td></tr>
   <tr><td>TTS/STT</td><td>CosyVoice3, Whisper turbo</td></tr>
   <tr><td>Mobile</td><td>Android (Kotlin/Java), Flutter, Unity (C#), Jetpack Compose</td></tr>
   <tr><td>Backend</td><td>FastAPI, Python asyncio, SQLite, EventBus SSE</td></tr>
   <tr><td>Frontend</td><td>Phaser.js, HTML/CSS/JS</td></tr>
   <tr><td>DevOps</td><td>Docker, systemd, Jenkins, Gitlab, Tailscale VPN</td></tr>
-  <tr><td>通訊</td><td>Telegram 3-Bot Bridge, WebSocket</td></tr>
+  <tr><td>通訊</td><td>Telegram Native (Hermes Gateway), WebSocket</td></tr>
   <tr><td>金融</td><td>Binance Futures API + Testnet</td></tr>
 </table>
 
@@ -213,7 +213,7 @@
 丙級電腦硬體裝修技術士（勞動部）</p>
 
 <div class="small" style="margin-top: 16px; text-align: center;">
-  Updated 2026-04-10 | github.com/AndyHuang1984
+  Updated 2026-04-13 | github.com/AndyHuang1984
 </div>
 
 </body>
