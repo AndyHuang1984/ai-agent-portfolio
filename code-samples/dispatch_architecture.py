@@ -1,8 +1,8 @@
 """
 Multi-Agent Dispatch Architecture (Simplified)
 
-Cross-process semaphore + session management for 3 AI agents
-dispatching tasks via OpenClaw gateway.
+Cross-process semaphore + session management for 3 AI agents.
+Originally built for OpenClaw, migrated to Hermes Agent (2026-04).
 
 Real system handles: fcntl.flock N=2 concurrency, min 10s interval,
 session lock quarantine, persistent vs isolated sessions, and
@@ -56,10 +56,10 @@ def _enforce_min_interval():
 
 def dispatch(message: str, role: str, timeout: int = DISPATCH_TIMEOUT) -> dict:
     """
-    Dispatch a task to an AI agent via OpenClaw.
+    Dispatch a task to an AI agent.
 
-    Flow: acquire slot → enforce interval → build preamble → openclaw agent
-    → parse result → emit events
+    Flow: acquire slot → enforce interval → build preamble → agent CLI
+    → parse result → emit events (originally OpenClaw, now Hermes Agent)
     """
     slot = _acquire_dispatch_slot()
     try:
@@ -69,7 +69,7 @@ def dispatch(message: str, role: str, timeout: int = DISPATCH_TIMEOUT) -> dict:
         full_message = f"{preamble}\n\n---\n\n{message}"
 
         cmd = [
-            "openclaw", "agent",
+            "hermes", "chat", "-q",  # was: "openclaw", "agent"
             "--role", role,
             "--message", full_message,
             "--timeout", str(timeout * 1000),  # ms

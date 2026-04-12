@@ -17,11 +17,11 @@
 ```
 老闆（1 人）
   ↓ Telegram 群組
-  ├── 🖥️ Server (RTX 5090 32GB)             ├── 💻 Mac (OpenClaw)
+  ├── 🖥️ Server (RTX 5090 32GB)             ├── 💻 Mac (Hermes Agent)
   │   克蕾（隊長 / GPT-5.4）                │   獨立 Agent（GPT-5.4）
   │   愛達（工程師 / GPT-5.4-mini）          │   ↓
   │   艾米（素材獵人 / GPT-5.4-mini）        │   加密貨幣研究 + 部落格
-  │   ↓                                     │   → Telegram 報告
+  │   ↓ Hermes Agent Framework              │   → Telegram 報告
   │   夜間全自動 Pipeline                    │   → 三平台自動發布
   │   → YouTube 自動上傳                    │
   │   ↓                                     │
@@ -58,11 +58,12 @@ LLM 編劇 (GPT-5.4)
 ## 雙機器架構
 
 ### Server（Ubuntu Linux, RTX 5090 32GB）
-- **3 AI Agent**（OpenClaw）：隊長 (GPT-5.4) + 工程師 (GPT-5.4-mini) + 素材獵人 (GPT-5.4-mini)
+- **3 AI Agent**（Hermes Agent）：隊長 (GPT-5.4) + 工程師 (GPT-5.4-mini) + 素材獵人 (GPT-5.4-mini)
 - **夜間 Pipeline**：01:00 自動啟動，序列化 3 條生產線，0 人工介入
-- **Docker 服務**：ComfyUI、Ollama、CosyVoice TTS、ChromaDB、SearXNG
+- **Docker 服務**：ComfyUI、CosyVoice TTS、ChromaDB、SearXNG
+- 2026-04 從 OpenClaw 遷移至 Hermes Agent，8,900+ 行自寫 dispatch/bridge 代碼被框架原生功能取代
 
-### Mac（MacBook Air M2 24GB, OpenClaw）
+### Mac（MacBook Air M2 24GB, Hermes Agent）
 - **1 AI Agent** (GPT-5.4) — 加密貨幣研究 + 部落格自動發布
 - **9 個 cron 排程**：crypto tracker（10 分鐘）、日報（08:00/23:00）、部落格準備（週日/二/五）
 - **加密貨幣研究**：Binance Futures Testnet 雙帳戶模擬（100U + 1000U）
@@ -76,16 +77,15 @@ LLM 編劇 (GPT-5.4)
 
 ### Multi-Agent 協作
 - **4 AI Agent** 跨兩台機器，各有明確角色分工
-- 跨進程 dispatch（`fcntl.flock` 信號量，N=2 並發，10 秒最小間隔）
-- 持久 session + session lock quarantine + 自動 fallback
-- Heartbeat 驅動：每 30 分鐘主動巡檢 5 項健康指標
-- Telegram 3-bot 自然對話 — agent 不需 @mention 自動回覆
+- Hermes Agent 框架：原生 multi-profile gateway、內建 cron scheduler、Telegram adapter
+- 前身為 OpenClaw 自建系統（dispatch_task.py、telegram_bridge.py、sync_workspace.sh 共 8,900+ 行），2026-04 遷移至 Hermes 原生功能
+- 持久 session + 自動 context compaction
+- Telegram multi-bot 自然對話 — 每個 agent 有獨立 bot 身份
 
 ### GPU VRAM 管理（單 GPU 多服務）
-- ComfyUI (WAN 2.2 ~20GB) ↔ Ollama (Gemma 4 31B ~26GB) ↔ CosyVoice (0.5B ~3GB)
-- 自動模型切換：`/free` → unload → load → 健康驗證
-- GGUF binary patching 控制 context window（262K → 8K）
-- 3 層防禦：GGUF patch + models.json + watchdog 自動修復
+- ComfyUI (WAN 2.2 ~20GB) ↔ CosyVoice TTS (0.5B ~3GB) — 單張 32GB GPU 序列化
+- 自動 VRAM 切換：`/free` → unload → load → 健康驗證
+- Pipeline LLM 呼叫透過 Hermes API server 路由（OpenAI Codex GPT-5.4）
 
 ### 生產可靠性
 - **47 條 Lessons Learned**：每條含根因分析 + 修復方案 + 預防措施
@@ -98,10 +98,10 @@ LLM 編劇 (GPT-5.4)
 - **Claude Daemon** 常駐雙機器，作為 pipeline LLM fallback（Gateway 失敗自動接手）
 
 ### Mac 自動化
-- OpenClaw cron：每 10 分鐘追蹤 crypto cycle，每日晨報/晚報推送 Telegram
-- Scheduler rescue 系統：cron 漏跑時 heartbeat 自動補救
+- Hermes Agent cron：每 10 分鐘追蹤 crypto cycle，每日晨報/晚報推送 Telegram
+- Blog pipeline：題材整理 → 草稿 → 三平台轉寫（週日/二/五排程）
 - 每日 briefing 狀態機：自動日期翻轉 + 主動探索待辦任務
-- Chrome 桌面自動化：blog 自動發布
+- Chrome 桌面自動化（CDP）：Substack/Medium/vocus 自動發布
 
 ## 程式碼範例
 
@@ -139,15 +139,15 @@ LLM 編劇 (GPT-5.4)
 
 | 類別 | 技術 |
 |------|------|
-| **AI Agent** | OpenClaw Multi-Agent, Heartbeat, Dispatch Queue |
+| **AI Agent** | Hermes Agent（2026-04 從 OpenClaw 遷移）, Multi-Profile Gateway, 內建 Cron |
 | **開發** | Claude Code (Opus), Claude Daemon (fallback LLM) |
-| **LLM** | GPT-5.4, GPT-5.4-mini, Gemma 4 31B (本地 fallback), Claude (Daemon fallback) |
+| **LLM** | GPT-5.4 (OpenAI Codex), GPT-5.4-mini, Claude (Daemon fallback) |
 | **AI 生成** | ComfyUI, FLUX, HiDream, WAN 2.2 I2V/S2V, SeedVR2, RIFE |
 | **TTS/STT** | CosyVoice3 0.5B, Whisper turbo |
 | **後端** | FastAPI, Python asyncio, SQLite, EventBus SSE |
 | **前端** | Phaser.js（虛擬辦公室）, HTML/CSS/JS |
 | **DevOps** | Docker, systemd, Tailscale VPN |
-| **通訊** | Telegram 3-Bot Bridge, WebSocket |
+| **通訊** | Telegram Native (Hermes Gateway), WebSocket |
 
 ## 經歷
 
@@ -155,4 +155,4 @@ LLM 編劇 (GPT-5.4)
 
 ---
 
-*更新於 2026-04-11*
+*更新於 2026-04-13 — 從 OpenClaw 遷移至 Hermes Agent*
