@@ -2,7 +2,7 @@
 
 # AI Agent Autonomous Production Platform
 
-> One-person team + Multi-Agent system, fully automated across 2 machines: video production + crypto research + blog publishing
+> One-person team + Multi-Agent system, fully automated across 3 realms: **video production + crypto research + blog publishing + B2C legal SaaS**
 
 **Andy Huang** — AI Agent System Engineer / Senior Software Developer
 
@@ -12,22 +12,25 @@
 
 ---
 
-## System Architecture
+## System Architecture (3 realms)
 
 ```
 Owner (1 person)
-  ↓ Telegram Group
-  ├── 🖥️ Server (RTX 5090 32GB)             ├── 💻 Mac (Hermes Agent)
-  │   Cleo (Captain / GPT-5.4)              │   Independent Agent (GPT-5.4)
-  │   Ada (Coder / GPT-5.4-mini)            │   ↓
-  │   Amelia (Scout / GPT-5.4-mini)         │   Crypto Research + Blog
-  │   ↓ Hermes Agent Framework              │   → Telegram Reports
-  │   Nightly Auto Pipeline                 │   → 3-Platform Auto Publish
-  │   → YouTube Auto Upload                 │
-  │   ↓                                     │
-  │   TG Natural Chat (3 agents)            │
-  └─────────────────────────────────────────┘
-      ↕ Tailscale VPN Cross-Machine Mesh
+  ↓ Telegram Group / Browser
+  ┌─────────────────────────────────────────────────────────────────────────┐
+  │                                                                          │
+  │  🖥️ Server (RTX 5090 32GB)        💻 Mac (M2 24GB)        ☁️ Cloudflare │
+  │  Cleo  — Captain / GPT-5.4       Independent Agent        Lex Legal SaaS │
+  │  Ada   — Coder   / GPT-5.4-mini   GPT-5.4                  Workers + D1   │
+  │  Amelia— Scout   / GPT-5.4-mini   ↓                        Vectorize Index│
+  │  ↓ Hermes Agent Framework         Crypto Research          (3,245 TW laws)│
+  │  Nightly Auto Pipeline (01:00)    + Blog Publishing        Workers AI     │
+  │  → YouTube Auto Upload            (Substack/Medium/vocus)  10 AI agents   │
+  │  ↓                                + 9 cron jobs            (zero ops)     │
+  │  TG natural chat (3 agents)                                                │
+  │                                                                          │
+  └─────────────────────────────────────────────────────────────────────────┘
+                            ↕ Tailscale VPN mesh
 ```
 
 ## Products (Fully Automated, Zero Human Intervention)
@@ -38,8 +41,11 @@ Owner (1 person)
 | Real News | 5-12 min | 2x/week | Auto topic → Self-Refine → Presenter |
 | Original Cat Shorts | 60s | Daily | 20 segments, speaker diarization |
 | Classic Film Cat Edition | 30-90s | Periodic | SAM2 face swap + original audio |
+| **Urban Fatso Drama Series (都市肥仔的人生)** | **5-10 min** | **Episodic (EP01-03 live)** | **South Park-style cels + lip-flap + multi-character composition** |
+| **Lex Legal SaaS** (`lex.aigcmore.app`) | **per task** | **continuous** | **Cloudflare Workers + D1 + Vectorize RAG (3,245 TW laws) + Workers AI** |
 | Crypto Research | - | 3x daily | Binance Futures testnet |
 | Blog Publishing | - | 3x/week | 3 platforms auto-publish |
+| **Services-as-Software intel** | **daily 09:00** | **daily** | **Hermes captain cron + blogwatcher skill, 48 products tracked across 13 verticals over 13 days** |
 
 ## Video Production Pipeline
 
@@ -48,20 +54,20 @@ LLM Scripting (GPT-5.4)
   → FLUX/HiDream Keyframes
     → WAN 2.2 I2V Dual-Stage (high_noise → low_noise)
       → SeedVR2 1080p Upscale + RIFE 24fps Interpolation
-        → CosyVoice3 TTS + BGM Mixing
+        → Edge TTS HsiaoYu (zh-TW) + BGM Sidechain Mixing
           → Whisper Hybrid Subtitles (zh/en/ja/ko)
             → YouTube Auto-Upload
 ```
 
 **10+ AI models** sequenced on a single 32GB GPU with automatic VRAM management.
 
-## Dual-Machine Architecture
+## 3-Realm Architecture
 
 ### Server (Ubuntu Linux, RTX 5090 32GB)
 - **3 AI Agents** via Hermes Agent: captain (GPT-5.4), coder (GPT-5.4-mini), scout (GPT-5.4-mini)
 - **Nightly pipeline**: auto-starts at 01:00, serializes 3 production lines, zero human intervention
-- **Docker services**: ComfyUI, CosyVoice TTS, ChromaDB, SearXNG
-- Migrated from OpenClaw → Hermes Agent (2026-04), replacing 8,900+ lines of custom dispatch/bridge code with native framework features
+- **Docker services**: ComfyUI, ChromaDB, SearXNG (CosyVoice retired 2026-04-26 → Edge TTS HsiaoYu)
+- Migrated from OpenClaw → Hermes Agent (2026-04), removing 8,900+ lines of custom dispatch/bridge code in favor of native framework features
 
 ### Mac (MacBook Air M2 24GB, Hermes Agent)
 - **1 AI Agent** (GPT-5.4) — crypto research + blog auto-publishing
@@ -69,33 +75,51 @@ LLM Scripting (GPT-5.4)
 - **Crypto research**: Binance Futures Testnet dual-account simulation (100U + 1000U)
 - **Blog auto-publish**: 3 platforms (Substack / Medium / vocus), Auto Rewrite Until Pass
 
-### Cross-Machine
-- **Tailscale VPN** mesh networking
+### Cloudflare Cloud (Lex 法律鋪)
+- **B2C Legal SaaS** at `lex.aigcmore.app` (Preview)
+- **Stack**: Next.js 15 App Router on OpenNext + Cloudflare Workers + D1 + R2 + Vectorize Index + Workers AI
+- **RAG**: 3,245 Taiwan law articles indexed; weekly auto-refresh via cron
+- **10 AI agents** for contract drafting / review / compliance audit / privacy policy / FOIA-style redaction
+- **Compliance-aware design**: PDPA §8 disclosure aligned with actual implementation; cookieless analytics (Cloudflare Web Analytics)
+
+### Cross-Realm
+- **Tailscale VPN** mesh networking (Server ↔ Mac)
 - **Telegram** unified communication — all agents share one group
+- **Cloudflare** as production stack for public-facing SaaS (Lex)
 
 ## Key Technical Highlights
 
 ### Multi-Agent Orchestration
-- **4 AI Agents** across 2 machines with distinct roles
+- **5 AI Agents** across 3 realms with distinct roles
 - Hermes Agent framework: native multi-profile gateway, built-in cron scheduler, Telegram adapter
 - Previously custom-built on OpenClaw (dispatch_task.py, telegram_bridge.py, sync_workspace.sh — 8,900+ lines), migrated to Hermes native features in 2026-04
 - Persistent sessions with automatic context compaction
 - Telegram multi-bot natural chat — each agent has its own bot identity
 
+### Vertical AI / RAG (Lex)
+- **3,245 Taiwan law articles** indexed in Cloudflare Vectorize for retrieval
+- **Domain models**: contract type classification, clause extraction, risk flagging, redline suggestions
+- **D1 batch transactions** for cross-table consistency (lesson learned: avoid sequential INSERT race)
+- **Compliance-first**: outputs include `verify_token` + `audit_log` + sanitization layer for LLM tool_use
+- Lex `agent_outputs` table tracks every agent invocation with type/lang/contract_type for analytics
+
 ### GPU VRAM Management (Single GPU, Multiple Services)
-- ComfyUI (WAN 2.2 ~20GB) ↔ CosyVoice TTS (0.5B ~3GB) — serialized on single 32GB GPU
+- ComfyUI (WAN 2.2 ~20GB) + image generation pipeline serialized on single 32GB GPU
 - Automatic VRAM swap: `/free` → unload → load → health verify
 - Pipeline LLM calls routed through Hermes API server (OpenAI Codex GPT-5.4)
 
 ### Production Reliability
-- **47 Lessons Learned** from production incidents (each with root cause + fix + prevention)
-- Nightly orchestrator: 3 pipelines serialized, process group kill, CosyVoice recovery
+- **105 Lessons Learned** from production incidents (each with root cause + fix + prevention rule)
+- Nightly orchestrator: 3 pipelines serialized, process group kill, sequential failure recovery
 - Quality gates: 11-point Vision LLM check + Self-Refine feedback loop
 - TTS 3-tier retry: seed rotation → LLM text rewrite → best-effort with cut repair
+- Automated weekly health audits across 5 scheduler systems (Linux crontab + systemd timers + Hermes per-profile cron + Claude RemoteTrigger)
+- Daily Services-as-Software intelligence cron (Hermes captain) — 48 products tracked across 13 verticals over 13 days
 
 ### Claude Code — Development Core
-- **Claude Code (Opus)** is the primary developer of this entire platform — 50+ scripts, 70+ SOPs, 47 Lessons Learned
+- **Claude Code (Opus)** is the primary developer of this entire platform — 70+ scripts, 100+ SOPs, 105 Lessons Learned
 - **Claude Daemon** deployed on both machines as pipeline LLM fallback
+- Heavy use of `/deep-plan` 16-Lens Reflection methodology for complex refactors
 
 ### Mac Automation
 - Hermes Agent cron: crypto cycle tracking every 10 min, morning/night reports via Telegram
@@ -140,19 +164,21 @@ LLM Scripting (GPT-5.4)
 | Category | Technologies |
 |----------|-------------|
 | **AI Agent** | Hermes Agent (migrated from OpenClaw 2026-04), Multi-Profile Gateway, Built-in Cron |
-| **Development** | Claude Code (Opus), Claude Daemon (fallback LLM) |
-| **LLM** | GPT-5.4 (OpenAI Codex), GPT-5.4-mini, Claude (daemon fallback) |
+| **Development** | Claude Code (Opus), Claude Daemon (fallback LLM), `/deep-plan` 16-Lens Reflection methodology |
+| **LLM** | GPT-5.4 (OpenAI Codex), GPT-5.4-mini, Anthropic Claude (daemon fallback), Workers AI |
 | **AI Generation** | ComfyUI, FLUX, HiDream, WAN 2.2 I2V/S2V, SeedVR2, RIFE |
-| **TTS/STT** | CosyVoice3 0.5B, Whisper turbo |
-| **Backend** | FastAPI, Python asyncio, SQLite, EventBus SSE |
-| **Frontend** | Phaser.js (virtual office), HTML/CSS/JS |
-| **DevOps** | Docker, systemd, Tailscale VPN |
+| **TTS / STT** | Edge TTS HsiaoYu (zh-TW, replaced CosyVoice 2026-04-26), Whisper turbo |
+| **Vertical AI / RAG** | Cloudflare Vectorize Index (3,245 TW laws), ChromaDB |
+| **Cloud SaaS Stack** (Lex) | Next.js 15 App Router, OpenNext, Cloudflare Workers / D1 / R2 / KV / Workers AI / Web Analytics |
+| **Backend** | FastAPI, Python asyncio, SQLite, EventBus SSE, Cloudflare Workers |
+| **Frontend** | Next.js, React, Phaser.js (virtual office), HTML/CSS/JS |
+| **DevOps** | Docker, systemd timers, Linux crontab, Hermes per-profile cron, Tailscale VPN |
 | **Communication** | Telegram Native (Hermes Gateway), WebSocket |
 
 ## Experience
 
-14 years in software development. Former Android/iOS/Unity engineer at Gamania, Aspeed Tech, So-net Taiwan. Transitioned to AI Agent systems engineering in mid-2025.
+14 years in software development. Former Android/iOS/Unity engineer at Gamania, Aspeed Tech, So-net Taiwan. Transitioned to AI Agent systems engineering in mid-2025. Currently operating a 3-realm autonomous platform spanning self-hosted GPU infrastructure, Mac-based agent automation, and Cloudflare-hosted B2C SaaS.
 
 ---
 
-*Updated 2026-04-13 — Migrated from OpenClaw to Hermes Agent*
+*Updated 2026-05-01 — Added Cloudflare realm (Lex Legal SaaS), Urban Fatso Drama Series, Services-as-Software intelligence cron; CosyVoice retirement; Lessons Learned 47 → 105*
