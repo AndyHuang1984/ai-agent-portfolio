@@ -55,8 +55,8 @@
   FastAPI &bull; Docker &bull; Android/Kotlin &bull; Unity/C#
 </div>
 
-<h2>AI Agent 專案 — 多 Agent 自主生產平台 <span class="timeline">2025/6 ~ 現在</span></h2>
-<p><em>獨立開發運營 | Hermes Agent + RTX 5090 32GB + Mac + Docker + FastAPI + Telegram</em></p>
+<h2>AI Agent 專案 — 多 Agent 自主生產平台 <span class="timeline">2025/6 ~ 現在 (近 1 年)</span></h2>
+<p><em>獨立開發運營 | Hermes Agent + RTX 5090 32GB + Mac + Cloudflare（D1/R2/Workers）+ Docker + FastAPI + Telegram</em></p>
 
 <h3>產品線一：AI 影片自動生產（Server）</h3>
 <div class="two-col">
@@ -108,6 +108,36 @@
   <li>21 個 Python 腳本 + Chrome 自動操作 + 52 份 Spec/Runbook SOP</li>
 </ul>
 
+<h3>產品線四：章魚 / 中文連載小說平台 <span class="timeline">2026/5 上線</span></h3>
+<p><em><a href="https://aigcmore.app">aigcmore.app</a> | Cloudflare Workers + D1 + R2 + Next.js 15 + OpenNext</em></p>
+<div class="two-col">
+<div>
+<strong>Firebase RTDB → CF 全 stack 遷移（M1-M9，1 天內 ship）</strong>
+<ul>
+  <li><span class="metric">242 部書 / 7566 章節</span>遷移 + 三層 verify</li>
+  <li>SSG/SSR/ISR hybrid (266 預生成頁 + 7566 動態章節)</li>
+  <li>Firebase Auth + KV opaque token + httpOnly cookie</li>
+  <li>Admin 後台 6 pages + CSRF + R2 cover upload</li>
+</ul>
+</div>
+<div>
+<strong>內容 + 變現整合</strong>
+<ul>
+  <li><strong>Google AdSense</strong> ca-pub-... 8 slot（首頁/分類/搜尋/書頁/章節）</li>
+  <li>23 分類 → 21 unique 筆名 + AI 副駕駛 byline（透明揭露 AI 介入）</li>
+  <li>Sitemap <span class="metric">7824 URL</span>（含 7566 章節 SSR），SEO indexable</li>
+  <li>Cloudflare Web Analytics（cookieless）</li>
+</ul>
+</div>
+</div>
+
+<h3>產品線五：都市肥仔系列影片 <span class="timeline">EP01-04 live YT</span></h3>
+<p><em>南方公園風格 cel + lip-flap + Edge TTS + WAN I2V，<strong>25 分鐘全自動</strong>產出 11 分鐘影片</em></p>
+<ul>
+  <li>EP04《離婚協議書是她先簽的》5/4 上架 YouTube public</li>
+  <li>每集 110 段 narration / 2-7 角色 / 數字嚴格對照（律師費/撫養費/房貸/資遣費）</li>
+</ul>
+
 <h3>關鍵數字</h3>
 <div class="two-col">
 <div>
@@ -127,18 +157,36 @@
 </table>
 </div>
 </div>
+<div class="two-col" style="margin-top: 8px;">
+<div>
+<table>
+  <tr><td>產品線</td><td class="metric">5 條（含章魚 + Lex）</td></tr>
+  <tr><td>章魚 SEO URL</td><td class="metric">7824 (含章節)</td></tr>
+  <tr><td>章魚 AdSense slot</td><td class="metric">8 個</td></tr>
+</table>
+</div>
+<div>
+<table>
+  <tr><td>章魚 books</td><td class="metric">230 published</td></tr>
+  <tr><td>章魚 chapters</td><td class="metric">7566</td></tr>
+  <tr><td>21 筆名分類化</td><td class="metric">完成</td></tr>
+</table>
+</div>
+</div>
 
 <div class="page-break"></div>
 
 <h2>工作經歷</h2>
 
-<h3>資深軟體工程師 — AI Agent 開發 <span class="timeline">2025/6 ~ 現在 (5 個月+)</span></h3>
-<p><em>網際網路相關業 | 台北市</em></p>
+<h3>資深軟體工程師 — AI Agent 開發 <span class="timeline">2025/6 ~ 現在 (近 1 年)</span></h3>
+<p><em>獨立開發運營 | 跨 Server + Mac + Cloudflare 三領域</em></p>
 <ul>
-  <li>Claude Code / Codex 編程自動化 + Python 開發</li>
-  <li>部署 Hermes Agent 多 Agent 系統（Server + Mac 雙機器）</li>
-  <li>設計開源影音自動化 Pipeline，從選題到 YouTube 上傳全自動</li>
-  <li>多 Agent 派發、沙盒運行、Telegram 協作</li>
+  <li>Claude Code / Codex 編程自動化 + Python / TypeScript 全棧</li>
+  <li>部署 Hermes Agent 多 Agent 系統（Server + Mac），v0.10→v0.12 升級含 21k messages reindex + Curator 7d 37 skill tracked</li>
+  <li>設計影音自動化 Pipeline（FLUX + WAN + Edge TTS + lip-flap），都市肥仔系列 EP01-04 上架 YouTube</li>
+  <li>章魚（aigcmore.app）小說平台 Firebase → Cloudflare full stack migration，1 天 ship M1-M9</li>
+  <li>Lex 法律 SaaS（lex.aigcmore.app）Vectorize RAG（3,245 條台灣法規）+ Workers AI</li>
+  <li>多 Agent 派發、沙盒運行、Telegram natural chat 協作</li>
 </ul>
 
 <h3>資深程式設計師 — 金俊數位行銷 <span class="timeline">2024/9 ~ 2025/10 (1年2月)</span></h3>
@@ -202,8 +250,10 @@
   <tr><td>TTS/STT</td><td>CosyVoice3, Whisper turbo</td></tr>
   <tr><td>Mobile</td><td>Android (Kotlin/Java), Flutter, Unity (C#), Jetpack Compose</td></tr>
   <tr><td>Backend</td><td>FastAPI, Python asyncio, SQLite, EventBus SSE</td></tr>
-  <tr><td>Frontend</td><td>Phaser.js, HTML/CSS/JS</td></tr>
-  <tr><td>DevOps</td><td>Docker, systemd, Jenkins, Gitlab, Tailscale VPN</td></tr>
+  <tr><td>Cloudflare</td><td>Workers, D1 SQLite, R2 Object Storage, KV, Workers AI, Vectorize RAG, Pages, Web Analytics</td></tr>
+  <tr><td>Web Stack</td><td>Next.js 15 (App Router), OpenNext, Tailwind 4, Drizzle ORM, Firebase Auth Web SDK</td></tr>
+  <tr><td>Frontend</td><td>Phaser.js, HTML/CSS/JS, React Server Components, AdSense 整合</td></tr>
+  <tr><td>DevOps</td><td>Docker, systemd, Jenkins, Gitlab, Tailscale VPN, GitHub Pages</td></tr>
   <tr><td>通訊</td><td>Telegram Native (Hermes Gateway), WebSocket</td></tr>
   <tr><td>金融</td><td>Binance Futures API + Testnet</td></tr>
 </table>
@@ -213,7 +263,7 @@
 丙級電腦硬體裝修技術士（勞動部）</p>
 
 <div class="small" style="margin-top: 16px; text-align: center;">
-  Updated 2026-04-13 | github.com/AndyHuang1984
+  Updated 2026-05-05 | github.com/AndyHuang1984 | aigcmore.app | lex.aigcmore.app
 </div>
 
 </body>

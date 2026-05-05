@@ -41,7 +41,8 @@
 | Real News 深度報導 | 5-12 分鐘 | 每週 2 支 | 自動選題 → 自我修正 → 虛擬主播 |
 | 原創貓咪短片 | 60 秒 | 每日 | 20 段多角色劇情 + 說話人分離 |
 | 經典電影貓臉版 | 30-90 秒 | 不定期 | SAM2 臉部替換 + 原始配音 |
-| **都市肥仔的人生 IP 系列** | **5-10 分鐘** | **集數制（EP01-03 已上線）** | **南方公園風 cels + lip-flap + 多角色合成** |
+| **都市肥仔的人生 IP 系列** | **5-10 分鐘** | **集數制（EP01-04 已上線）** | **南方公園風 cels + lip-flap + 多角色合成** |
+| **🐙 章魚中文連載小說平台** (`aigcmore.app`) | **隨時閱讀** | **持續上新** | **Cloudflare Workers + D1 + R2 + Next.js 15 + AdSense + 230 部書 / 7566 章節** |
 | **Lex 法律鋪 SaaS** (`lex.aigcmore.app`) | **按需** | **持續開放** | **Cloudflare Workers + D1 + Vectorize RAG（3,245 條台灣法規）+ Workers AI** |
 | 加密貨幣研究 | - | 每日 3 次 | Binance Futures Testnet |
 | 部落格自動發布 | - | 每週 3 次 | 三平台自動發布 |
@@ -74,6 +75,15 @@ LLM 編劇 (GPT-5.4)
 - **9 個 cron 排程**：crypto tracker（10 分鐘）、日報（08:00/23:00）、部落格準備（週日/二/五）
 - **加密貨幣研究**：Binance Futures Testnet 雙帳戶模擬（100U + 1000U）
 - **部落格自動發布**：三平台（Substack / Medium / vocus），Auto Rewrite Until Pass
+
+### Cloudflare 雲端（章魚小說平台 + Lex 法律鋪）
+- **章魚（`aigcmore.app`）** — 中文連載小說平台，**2026-05-03 完成 brand 改造**
+  - Firebase RTDB → Cloudflare D1/R2/Workers 完整遷移於 1 天內 ship（M1-M9，2026-05-02）
+  - **230 部書 / 7566 章節 / 23 分類 / 21 unique 筆名** 含 AI 副駕駛 byline 透明揭露
+  - Next.js 15 App Router on OpenNext + Tailwind 4，SSG（266 頁）+ ISR（7566 章節）hybrid
+  - Firebase Auth（Web SDK）+ KV opaque token + httpOnly cookie + 6 個 admin 後台 + CSRF 保護
+  - **Google AdSense ca-pub-...** 已整合 8 個廣告位（首頁 / 分類 / 搜尋 / 書頁 / 章節）
+  - Cloudflare Web Analytics（cookieless）+ sitemap 7824 URLs（含全章節 SEO）
 
 ### Cloudflare 雲端（Lex 法律鋪）
 - **B2C 法律 SaaS** 部署於 `lex.aigcmore.app`（Preview 階段）

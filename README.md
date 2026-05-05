@@ -41,7 +41,8 @@ Owner (1 person)
 | Real News | 5-12 min | 2x/week | Auto topic → Self-Refine → Presenter |
 | Original Cat Shorts | 60s | Daily | 20 segments, speaker diarization |
 | Classic Film Cat Edition | 30-90s | Periodic | SAM2 face swap + original audio |
-| **Urban Fatso Drama Series (都市肥仔的人生)** | **5-10 min** | **Episodic (EP01-03 live)** | **South Park-style cels + lip-flap + multi-character composition** |
+| **Urban Fatso Drama Series (都市肥仔的人生)** | **5-10 min** | **Episodic (EP01-04 live)** | **South Park-style cels + lip-flap + multi-character composition** |
+| **🐙 Zhangyu Novel Platform** (`aigcmore.app`) | **N/A (read-anytime)** | **continuous** | **Cloudflare Workers + D1 + R2 + Next.js 15 + AdSense + 230 books / 7566 chapters** |
 | **Lex Legal SaaS** (`lex.aigcmore.app`) | **per task** | **continuous** | **Cloudflare Workers + D1 + Vectorize RAG (3,245 TW laws) + Workers AI** |
 | Crypto Research | - | 3x daily | Binance Futures testnet |
 | Blog Publishing | - | 3x/week | 3 platforms auto-publish |
@@ -74,6 +75,15 @@ LLM Scripting (GPT-5.4)
 - **9 cron jobs**: crypto tracker (10min), daily report (08:00/23:00), blog prep (Sun/Tue/Fri)
 - **Crypto research**: Binance Futures Testnet dual-account simulation (100U + 1000U)
 - **Blog auto-publish**: 3 platforms (Substack / Medium / vocus), Auto Rewrite Until Pass
+
+### Cloudflare Cloud (Zhangyu Novel Platform + Lex Legal SaaS)
+- **Zhangyu (`aigcmore.app`)** — Chinese serialized novel platform, **rebranded 2026-05-03**
+  - Firebase RTDB → Cloudflare D1/R2/Workers full migration in 1 day (M1-M9, 2026-05-02)
+  - **230 published books / 7566 chapters / 23 categories / 21 unique pen names** with AI co-pilot byline
+  - Next.js 15 App Router + OpenNext + Tailwind 4, SSG (266 pages) + ISR (7566 chapters) hybrid
+  - Firebase Auth (Web SDK) + KV opaque token + httpOnly cookie + 6 admin pages with CSRF
+  - **Google AdSense ca-pub-...** integrated with 8 ad slots (home/category/search/book/chapter)
+  - Cloudflare Web Analytics (cookieless) + sitemap 7824 URLs (full-chapter SEO)
 
 ### Cloudflare Cloud (Lex 法律鋪)
 - **B2C Legal SaaS** at `lex.aigcmore.app` (Preview)
