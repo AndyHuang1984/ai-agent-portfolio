@@ -147,12 +147,12 @@ LLM Scripting (GPT-5.4)
 ### 🐙 Zhangyu Novel Platform — `aigcmore.app` (NEW 2026-05)
 > 230 books / 7566 chapters / 23 categories / 21 unique pen names + AI co-pilot byline
 <p align="center">
-  <img src="assets/screenshots/zhangyu_home.jpg" width="32%" title="Home — 章魚君 mascot + 23 categories" />
-  <img src="assets/screenshots/zhangyu_category.jpg" width="32%" title="Category — 19 books × 史筆生 pen name" />
-  <img src="assets/screenshots/zhangyu_book.jpg" width="32%" title="Book page — 雲外客 · AI 副駕駛協作 byline" />
+  <img src="assets/screenshots/zhangyu_home.jpg" width="49%" title="Home — 章魚君 mascot + 23 categories" />
+  <img src="assets/screenshots/zhangyu_category.jpg" width="49%" title="Category — 19 books × 史筆生 pen name" />
 </p>
 <p align="center">
-  <img src="assets/screenshots/zhangyu_chapter.jpg" width="80%" title="Reading — 4 paper modes + font size + AI 副駕駛 byline" />
+  <img src="assets/screenshots/zhangyu_book.jpg" width="49%" title="Book page — 雲外客 · AI 副駕駛協作 byline" />
+  <img src="assets/screenshots/zhangyu_chapter.jpg" width="49%" title="Reading — 4 paper modes + AI 副駕駛 byline" />
 </p>
 
 ### ⚖️ Lex Legal SaaS — `lex.aigcmore.app` (NEW 2026-05)

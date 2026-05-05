@@ -147,12 +147,12 @@ LLM 編劇 (GPT-5.4)
 ### 🐙 章魚 中文連載小說平台 — `aigcmore.app`（2026-05 新上線）
 > 230 部書 / 7566 章節 / 23 分類 / 21 unique 筆名 + AI 副駕駛 byline
 <p align="center">
-  <img src="assets/screenshots/zhangyu_home.jpg" width="32%" title="首頁 — 章魚君 mascot + 23 分類" />
-  <img src="assets/screenshots/zhangyu_category.jpg" width="32%" title="分類頁 — 歷史 19 部 × 史筆生筆名" />
-  <img src="assets/screenshots/zhangyu_book.jpg" width="32%" title="書頁 — 雲外客 · AI 副駕駛協作 byline" />
+  <img src="assets/screenshots/zhangyu_home.jpg" width="49%" title="首頁 — 章魚君 mascot + 23 分類" />
+  <img src="assets/screenshots/zhangyu_category.jpg" width="49%" title="分類頁 — 歷史 19 部 × 史筆生筆名" />
 </p>
 <p align="center">
-  <img src="assets/screenshots/zhangyu_chapter.jpg" width="80%" title="章節閱讀 — 4 紙紋 + 字級 + AI 副駕駛 byline" />
+  <img src="assets/screenshots/zhangyu_book.jpg" width="49%" title="書頁 — 雲外客 · AI 副駕駛協作 byline" />
+  <img src="assets/screenshots/zhangyu_chapter.jpg" width="49%" title="章節閱讀 — 4 紙紋 + AI 副駕駛 byline" />
 </p>
 
 ### ⚖️ Lex 法律鋪 SaaS — `lex.aigcmore.app`（2026-05 新上線）
