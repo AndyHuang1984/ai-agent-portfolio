@@ -15,6 +15,8 @@
 
   /* Keep blocks together */
   .no-break { break-inside: avoid; page-break-inside: avoid; }
+  h2 { page-break-after: avoid; break-after: avoid; }
+  h2 + * { page-break-before: avoid; break-before: avoid; }
 
   .hero { background: linear-gradient(135deg, #161b22 0%, #0d1117 50%, #1a1e2e 100%); padding: 24px 20px 16px; border-radius: 10px; margin-bottom: 12px; border: 1px solid #30363d; }
   .hero-sub { font-size: 11pt; color: #8b949e; margin: 2px 0 8px; }
@@ -39,6 +41,7 @@
   th { background: #1c2128; color: #c9d1d9; text-align: left; padding: 4px 6px; border: 1px solid #30363d; }
   td { padding: 4px 6px; border: 1px solid #30363d; color: #b0b8c1; }
   .page-break { page-break-before: always; }
+  .product-section { break-inside: avoid; page-break-inside: avoid; margin-bottom: 12px; }
   .avatar-row { display: flex; gap: 8px; align-items: center; margin: 4px 0; }
   .avatar-row img { width: 44px; height: 44px; border-radius: 50%; border: 2px solid #30363d; }
   .avatar-info { flex: 1; }
@@ -111,6 +114,7 @@
   </div>
 </div>
 
+<section class="product-section">
 <h2>都市肥仔的人生 IP 系列 — EP04《離婚協議書是她先簽的》（2026/5/4 上架）</h2>
 <div class="grid-3 no-break">
   <div class="img-card"><img src="assets/youtube/ep04_opening.jpg"><div class="caption">Act 1 — 失業歸家</div></div>
@@ -122,6 +126,9 @@
   + BGM Silent Descent + intro/outro card → 25 分鐘全自動產出 11 分鐘影片，<a href="https://youtu.be/_xoprokmXns" style="color:#58a6ff;">YouTube public</a>。
 </div>
 
+</section>
+
+<section class="product-section">
 <h2>章魚 中文連載小說平台（aigcmore.app）— 2026/5/2 上線</h2>
 <div class="grid-3 no-break">
   <div class="img-card"><img src="assets/screenshots/zhangyu_home.jpg"><div class="caption">首頁 — 章魚君 mascot + 23 分類</div></div>
@@ -134,6 +141,9 @@
   <a href="https://aigcmore.app" style="color:#58a6ff;">aigcmore.app</a>
 </div>
 
+</section>
+
+<section class="product-section">
 <h2>Lex 法律鋪 SaaS（lex.aigcmore.app）— 10 個法律 Agent</h2>
 <div class="grid-3 no-break">
   <div class="img-card" style="grid-column: span 2;"><img src="assets/screenshots/lex_home.jpg" style="object-fit: cover; max-height: 300px;"><div class="caption">「不是律師事務所，是 AI 幫你把法律文件寫完」— 3,245 條台灣法規 RAG / 26 件 AI 文件累計 / 律師 1/10 價格</div></div>
@@ -153,6 +163,9 @@
   cron 每週一 03:00 自動 refresh laws。<a href="https://lex.aigcmore.app" style="color:#58a6ff;">lex.aigcmore.app</a>
 </div>
 
+</section>
+
+<section class="product-section">
 <h2>本地短影音工具 — Team HQ + Real News 工作台</h2>
 <div class="grid-3 no-break">
   <div class="img-card" style="grid-column: span 2;"><img src="assets/screenshots/webui_team_hq.jpg"><div class="caption">Team HQ v4 — 虛擬辦公室 / 任務看板 / 團隊聊天 / GPU & ComfyUI 即時狀態</div></div>
@@ -162,6 +175,8 @@
   FastAPI + Phaser.js + 12 短影音主題輪替。GPU 即時監控 + Claude Sonnet 4.6 雲端 LLM + ComfyUI 排程。
   從題材到 YouTube 上傳 0 人工介入。
 </div>
+
+</section>
 
 <!-- ==================== PAGE 2: AGENT TEAM + PIPELINE + SAMPLES ==================== -->
 <div class="page-break"></div>
