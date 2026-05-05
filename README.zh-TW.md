@@ -144,13 +144,40 @@ LLM 編劇 (GPT-5.4)
 
 ## 截圖
 
+### 🐙 章魚 中文連載小說平台 — `aigcmore.app`（2026-05 新上線）
+> 230 部書 / 7566 章節 / 23 分類 / 21 unique 筆名 + AI 副駕駛 byline
+<p float="left">
+  <img src="assets/screenshots/zhangyu_home.jpg" width="32%" title="首頁 — 章魚君 mascot + 23 分類" />
+  <img src="assets/screenshots/zhangyu_book.jpg" width="32%" title="書頁 — 雲外客 · AI 副駕駛協作 byline" />
+  <img src="assets/screenshots/zhangyu_chapter.jpg" width="32%" title="章節閱讀 — 4 紙紋 + 字級 + AdSense slot" />
+</p>
+
+### ⚖️ Lex 法律鋪 SaaS — `lex.aigcmore.app`（2026-05 新上線）
+> 10 個法律 Agent · 3,245 條台灣法規 RAG · 3 分鐘 PDF 交付 · 律師 1/10 價格
+<img src="assets/screenshots/lex_home.jpg" width="70%" title="Lex 法律鋪 — AI 法律文件生成" />
+
+### 🎬 都市肥仔系列 EP04《離婚協議書是她先簽的》（2026-05-04，YT 已公開）
+> 南方公園風 cels + lip-flap + Edge TTS（5 聲線）+ WAN I2V + BGM，25 分鐘全自動產出 11 分鐘影片
+<p float="left">
+  <img src="assets/youtube/ep04_opening.jpg" width="24%" title="Act 1 — 失業歸家" />
+  <img src="assets/youtube/ep04_act1_lawyer.jpg" width="24%" title="Act 2 — 律師事務所" />
+  <img src="assets/youtube/ep04_act2_signing.jpg" width="24%" title="Act 2 — 戶政事務所簽字" />
+  <img src="assets/youtube/ep04_finale.jpg" width="24%" title="Act 3 — 結尾" />
+</p>
+
 ### 虛擬辦公室（Phaser.js）
 <p float="left">
   <img src="assets/screenshots/office_cyberpunk.png" width="45%" />
   <img src="assets/screenshots/office_sakura.png" width="45%" />
 </p>
 
-### WebUI 控制台
+### 本地工具 — Team HQ v4 + Real News 工作台（2026-05 新版）
+<p float="left">
+  <img src="assets/screenshots/webui_team_hq.jpg" width="60%" title="Team HQ v4 — 虛擬辦公室 + 任務看板 + GPU/ComfyUI 狀態 + 團隊聊天" />
+  <img src="assets/screenshots/webui_news.jpg" width="38%" title="Real News — 題材 → AI 審查 → 腳本 三段式" />
+</p>
+
+### Legacy WebUI 控制台
 <img src="assets/screenshots/webui_dashboard.png" width="70%" />
 
 ### AI Agent 團隊

@@ -144,13 +144,40 @@ LLM Scripting (GPT-5.4)
 
 ## Screenshots
 
+### 🐙 Zhangyu Novel Platform — `aigcmore.app` (NEW 2026-05)
+> 230 books / 7566 chapters / 23 categories / 21 unique pen names + AI co-pilot byline
+<p float="left">
+  <img src="assets/screenshots/zhangyu_home.jpg" width="32%" title="Home — 章魚君 mascot + 23 categories" />
+  <img src="assets/screenshots/zhangyu_book.jpg" width="32%" title="Book page — 雲外客 · AI 副駕駛協作 byline" />
+  <img src="assets/screenshots/zhangyu_chapter.jpg" width="32%" title="Reading — 4 paper modes + AdSense slot" />
+</p>
+
+### ⚖️ Lex Legal SaaS — `lex.aigcmore.app` (NEW 2026-05)
+> 10 legal Agents · 3,245 TW laws RAG · 3-min PDF delivery · 1/10 lawyer pricing
+<img src="assets/screenshots/lex_home.jpg" width="70%" title="Lex 法律鋪 — AI legal document generation" />
+
+### 🎬 Urban Fatso Drama Series EP04《離婚協議書是她先簽的》(NEW 2026-05-04, YT public)
+> South Park-style cels + lip-flap + Edge TTS (5 voices) + WAN I2V + BGM, 25 min auto → 11 min video
+<p float="left">
+  <img src="assets/youtube/ep04_opening.jpg" width="24%" title="Act 1 — Unemployed homecoming" />
+  <img src="assets/youtube/ep04_act1_lawyer.jpg" width="24%" title="Act 2 — Lawyer office" />
+  <img src="assets/youtube/ep04_act2_signing.jpg" width="24%" title="Act 2 — Signing divorce" />
+  <img src="assets/youtube/ep04_finale.jpg" width="24%" title="Act 3 — Finale" />
+</p>
+
 ### Virtual Office (Phaser.js)
 <p float="left">
   <img src="assets/screenshots/office_cyberpunk.png" width="45%" />
   <img src="assets/screenshots/office_sakura.png" width="45%" />
 </p>
 
-### WebUI Dashboard
+### Local Tools — Team HQ v4 + Real News Workstation (NEW 2026-05)
+<p float="left">
+  <img src="assets/screenshots/webui_team_hq.jpg" width="60%" title="Team HQ v4 — Virtual office + Task board + GPU/ComfyUI status + Team chat" />
+  <img src="assets/screenshots/webui_news.jpg" width="38%" title="Real News — Topic → AI review → Script 3-stage pipeline" />
+</p>
+
+### Legacy WebUI Dashboard
 <img src="assets/screenshots/webui_dashboard.png" width="70%" />
 
 ### AI Agent Team
